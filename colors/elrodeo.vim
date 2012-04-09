@@ -52,7 +52,7 @@ hi Special		guifg=#68ffbd
 hi Conditional  guifg=#68ffbd
 hi Boolean      guifg=#99dd99
 hi Delimiter    guifg=#999999
-hi Character    guifg=white guibg=#ff0000
+hi Character    guifg=#55d2ee
 hi Search       guifg=black guibg=#68ffbd
 
 " not used in Clojure (left as in wombat)
