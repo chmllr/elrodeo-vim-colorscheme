@@ -44,7 +44,7 @@ hi Todo 		guifg=#333333 guibg=#cccccc
 hi Constant 	guifg=white
 hi String 		guifg=#bbddff
 hi Identifier 	guifg=#ff0000
-hi Define    	guifg=#ff0000
+hi Define    	guifg=#68ffbd
 hi Function 	guifg=#68ffbd
 hi Macro        guifg=#68ffbd
 hi Number		guifg=#319899
