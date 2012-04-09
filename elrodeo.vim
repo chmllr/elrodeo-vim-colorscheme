@@ -1,0 +1,62 @@
+" Vim color file
+" Name: elrodeo
+" Maintainer: Christian Müller (@chmllr)
+" Version: 1.0
+"
+" Inspired by the color scheme used by ibdknox.
+
+set background=dark
+
+hi clear
+if exists("syntax_on")
+    syntax reset
+endif
+
+let g:colors_name="elrodeo"
+
+" the nexz block is copied from the wombat theme:
+" Vim >= 7.0 specific colors
+if version >= 700
+  hi CursorLine guibg=#2d2d2d
+  hi CursorColumn guibg=#2d2d2d
+  hi MatchParen guifg=#f6f3e8 guibg=#857b6f gui=bold
+  hi Pmenu 		guifg=#f6f3e8 guibg=#444444
+  hi PmenuSel 	guifg=#000000 guibg=#cae682
+endif
+" General colors
+hi Normal      guibg=#333333 guifg=#dddddd
+hi Cursor 		guifg=NONE    guibg=#656565
+hi NonText 		guifg=#808080 guibg=#303030
+hi LineNr 		guifg=#666666 guibg=#282828
+hi StatusLine 	guifg=#f6f3e8 guibg=#444444
+hi StatusLineNC guifg=#857b6f guibg=#444444
+hi VertSplit 	guifg=#444444 guibg=#444444
+hi Folded 		guibg=#384048 guifg=#a0a8b0
+hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold
+hi Visual		guifg=#f6f3e8 guibg=#444444
+hi SpecialKey	guifg=#808080 guibg=#343434
+
+
+" Syntax highlighting
+hi Comment 		guifg=#677c99
+hi Operator		guifg=#aaffff
+hi Todo 		guifg=#333333 guibg=#cccccc
+hi Constant 	guifg=white
+hi String 		guifg=#bbddff
+hi Identifier 	guifg=#ff0000
+hi Define    	guifg=#ff0000
+hi Function 	guifg=#68ffbd
+hi Macro        guifg=#68ffbd
+hi Number		guifg=#319899
+hi Special		guifg=#68ffbd
+hi Conditional  guifg=#68ffbd
+hi Boolean      guifg=#99dd99
+hi Delimiter    guifg=#999999
+hi Character    guifg=white guibg=#ff0000
+hi Search       guifg=black guibg=#68ffbd
+
+" not used in Clojure (left as in wombat)
+hi Type 		guifg=#cae682
+hi Statement 	guifg=#8ac6f2
+hi Keyword		guifg=#8ac6f2
+hi PreProc 		guifg=#e5786d
