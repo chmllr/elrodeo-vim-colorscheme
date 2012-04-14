@@ -39,7 +39,7 @@ hi SpecialKey	guifg=#808080 guibg=#343434
 
 " Syntax highlighting
 hi Comment 		guifg=#677c99
-hi Operator		guifg=#aaffff
+hi Operator		guifg=#A020F0
 hi Todo 		guifg=#333333 guibg=#cccccc
 hi Constant 	guifg=white
 hi String 		guifg=#bbddff
