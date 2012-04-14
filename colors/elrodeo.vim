@@ -39,21 +39,21 @@ hi SpecialKey	guifg=#808080 guibg=#343434
 
 " Syntax highlighting
 hi Comment 		guifg=#677c99
-hi Operator		guifg=#A020F0
+hi Operator		guifg=#8040d0
 hi Todo 		guifg=#333333 guibg=#cccccc
 hi Constant 	guifg=white
 hi String 		guifg=#bbddff
 hi Identifier 	guifg=#ff0000
-hi Define    	guifg=#68ffbd
-hi Function 	guifg=#68ffbd
-hi Macro        guifg=#68ffbd
+hi Define    	guifg=#48df9d
+hi Function 	guifg=#48df9d
+hi Macro        guifg=#48df9d
 hi Number		guifg=#319899
-hi Special		guifg=#68ffbd
-hi Conditional  guifg=#68ffbd
+hi Special		guifg=#48df9d
+hi Conditional  guifg=#48df9d
 hi Boolean      guifg=#99dd99
 hi Delimiter    guifg=#999999
 hi Character    guifg=#55d2ee
-hi Search       guifg=black guibg=#68ffbd
+hi Search       guifg=black guibg=#48df9d
 
 " not used in Clojure (left as in wombat)
 hi Type 		guifg=#cae682
