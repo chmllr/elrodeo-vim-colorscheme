@@ -24,10 +24,10 @@ if version >= 700
   hi PmenuSel 	guifg=#000000 guibg=#cae682
 endif
 " General colors
-hi Normal      guibg=#383838 guifg=#dddddd
+hi Normal      guibg=#404040 guifg=#dddddd
 hi Cursor 		guifg=NONE    guibg=#656565
-hi NonText 		guifg=#808080 guibg=#383838
-hi LineNr 		guifg=#666666 guibg=#303030
+hi NonText 		guifg=#808080 guibg=#404040
+hi LineNr 		guifg=#666666 guibg=#383838
 hi StatusLine 	guifg=#f6f3e8 guibg=#444444
 hi StatusLineNC guifg=#857b6f guibg=#444444
 hi VertSplit 	guifg=#444444 guibg=#444444
