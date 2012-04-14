@@ -43,7 +43,7 @@ hi Operator		guifg=#8040d0
 hi Todo 		guifg=#333333 guibg=#cccccc
 hi Constant 	guifg=white
 hi String 		guifg=#bbddff
-hi Identifier 	guifg=#ff0000
+hi Identifier 	guifg=#48df9d
 hi Define    	guifg=#48df9d
 hi Function 	guifg=#48df9d
 hi Macro        guifg=#48df9d
@@ -54,6 +54,7 @@ hi Boolean      guifg=#99dd99
 hi Delimiter    guifg=#999999
 hi Character    guifg=#55d2ee
 hi Search       guifg=black guibg=#48df9d
+hi Visual       guibg=#303030
 
 " not used in Clojure (left as in wombat)
 hi Type 		guifg=#cae682
