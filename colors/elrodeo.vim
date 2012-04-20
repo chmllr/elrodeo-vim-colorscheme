@@ -24,7 +24,7 @@ if version >= 700
   hi PmenuSel 	guifg=#000000 guibg=#cae682
 endif
 " General colors
-hi Normal      guibg=#404040 guifg=#dddddd
+hi Normal      guibg=#404040 guifg=#d0d0d0
 hi Cursor 		guifg=NONE    guibg=#656565
 hi NonText 		guifg=#808080 guibg=#404040
 hi LineNr 		guifg=#666666 guibg=#383838
@@ -39,21 +39,21 @@ hi SpecialKey	guifg=#808080 guibg=#343434
 
 " Syntax highlighting
 hi Comment 		guifg=#677c99
-hi Operator		guifg=#8040d0
+hi Operator		guifg=#a080f0
 hi Todo 		guifg=#333333 guibg=#cccccc
 hi Constant 	guifg=white
 hi String 		guifg=#bbddff
-hi Identifier 	guifg=#48df9d
-hi Define    	guifg=#48df9d
-hi Function 	guifg=#48df9d
-hi Macro        guifg=#48df9d
+hi Identifier 	guifg=#30c080
+hi Define    	guifg=#30c080
+hi Function 	guifg=#30c080
+hi Macro        guifg=#30c080
 hi Number		guifg=#319899
-hi Special		guifg=#48df9d
-hi Conditional  guifg=#48df9d
+hi Special		guifg=#30c080
+hi Conditional  guifg=#30c080
 hi Boolean      guifg=#99dd99
 hi Delimiter    guifg=#999999
 hi Character    guifg=#55d2ee
-hi Search       guifg=black guibg=#48df9d
+hi Search       guifg=black guibg=#30c080
 hi Visual       guibg=#303030
 
 " not used in Clojure (left as in wombat)
