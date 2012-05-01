@@ -4,4 +4,10 @@ This is a dark low contrast vim color scheme influenced by colors used by Chris 
 
 ![screenshot](https://github.com/chmllr/vim-colorscheme-elrodeo/raw/master/screenshot.png)
 
-It can be installed as a pathogen plugin.
+## Installation
+
+The olor scheme can be installed as a pathogen plugin, i.e., just check it out to `~/.vim/bundle`, or copy the content of `colors`to `~/.vim/colors`.
+
+## Usage
+
+In Vim: `:colorscheme elrodeo`.
