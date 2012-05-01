@@ -6,7 +6,7 @@ This is a dark low contrast vim color scheme influenced by colors used by Chris 
 
 ## Installation
 
-The olor scheme can be installed as a pathogen plugin, i.e., just check it out to `~/.vim/bundle`, or copy the content of `colors`to `~/.vim/colors`.
+The color scheme can be installed as a pathogen plugin, i.e., just check it out to `~/.vim/bundle`, or copy the content of `colors`to `~/.vim/colors`.
 
 ## Usage
 
