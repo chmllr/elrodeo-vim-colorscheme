@@ -1,6 +1,6 @@
 ## Vim Colorscheme 'Elrodeo'
 
-A dark low contrast vim color scheme.
+A dark low-contrast Vim color scheme.
 
 ## Screenshot
 
