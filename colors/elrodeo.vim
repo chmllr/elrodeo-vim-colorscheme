@@ -1,9 +1,7 @@
 " Vim color file
 " Name: elrodeo
-" Maintainer: Christian Müller (@chmllr)
-" Version: 1.0
-"
-" Inspired by the color scheme used by ibdknox.
+" Maintainer: Christian Müller (@gravitydenier))
+" Version: 2.0
 
 set background=dark
 
@@ -36,20 +34,17 @@ hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold
 hi Visual		guifg=#f6f3e8 guibg=#444444
 hi SpecialKey	guifg=#808080 guibg=#343434
 
-
 " Syntax highlighting
 hi Comment 		guifg=#677c99
 hi Operator		guifg=#a080f0
 hi Todo 		guifg=#333333 guibg=#cccccc
 hi Constant 	guifg=white
 hi String 		guifg=#bbddff
-hi Identifier 	guifg=#30c080
+hi Identifier 	guifg=#8ac6f2
 hi Define    	guifg=#30c080
-hi Function 	guifg=#30c080
 hi Macro        guifg=#30c080
 hi Number		guifg=#319899
 hi Special		guifg=#30c080
-hi Conditional  guifg=#30c080
 hi Boolean      guifg=#99dd99
 hi Delimiter    guifg=#999999
 hi Character    guifg=#55d2ee
@@ -59,5 +54,5 @@ hi Visual       guibg=#303030
 " not used in Clojure (left as in wombat)
 hi Type 		guifg=#cae682
 hi Statement 	guifg=#8ac6f2
-hi Keyword		guifg=#8ac6f2
+hi Keyword		guifg=#a080e9
 hi PreProc 		guifg=#e5786d
