@@ -43,6 +43,7 @@ hi String 		guifg=#bbddff
 hi Identifier 	guifg=#8ac6f2
 hi Define    	guifg=#30c080
 hi Macro        guifg=#30c080
+hi Function 	guifg=#30c080
 hi Number		guifg=#319899
 hi Special		guifg=#30c080
 hi Boolean      guifg=#99dd99
