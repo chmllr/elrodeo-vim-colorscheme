@@ -1,15 +1,15 @@
-## Vim Colorscheme 'Elrodeo'
-
-A dark low-contrast Vim color scheme.
-
-## Screenshot
+## Dark Low-Contrast Colorscheme 'Elrodeo'
 
 ![screenshot](https://github.com/chmllr/vim-colorscheme-elrodeo/raw/master/screenshot.png)
 
 ## Installation
 
-The color scheme can be installed as a pathogen plugin, i.e., just check it out to `~/.vim/bundle`, or copy the content of `colors`to `~/.vim/colors`.
+## Visual Studio Code
 
-## Usage
+Copy the content of the sub folder `vsc` to `~/.vscode/extensions/`.
 
-In Vim: `:colorscheme elrodeo`.
+## Vim
+
+The color scheme can be installed as a pathogen plugin, i.e., 
+just copy the content of the `vim` subfolder to `~/.vim/bundle/`, or copy the content of 
+`colors`to `~/.vim/colors/`.
