@@ -1,0 +1,17 @@
+{
+	"name": "theme-elrodeo",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": ">=0.9.0-pre.1"
+	},
+	"publisher": "none",
+	"contributes": {
+		"themes": [
+			{
+				"label": "Elrodeo",
+				"uiTheme": "vs-dark",
+				"path": "./themes/Elrodeo.tmTheme"
+			}
+		]
+	}
+}
