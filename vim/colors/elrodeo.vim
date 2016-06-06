@@ -17,8 +17,8 @@ let g:colors_name="elrodeo"
 if version >= 700
   hi CursorLine guibg=#2d2d2d
   hi CursorColumn guibg=#2d2d2d
-  hi MatchParen guifg=#f6f3e8 guibg=#857b6f gui=bold
-  hi Pmenu 		guifg=#f6f3e8 guibg=#444444
+  hi MatchParen guifg=#f8f8f0 guibg=#857b6f gui=bold
+  hi Pmenu 		guifg=#f9f9f0 guibg=#444444
   hi PmenuSel 	guifg=#000000 guibg=#cae682
 endif
 " General colors
@@ -26,12 +26,12 @@ hi Normal      guibg=#404040 guifg=#d0d0d0
 hi Cursor 		guifg=#656565 guibg=#d0d0d0
 hi NonText 		guifg=#808080 guibg=#404040
 hi LineNr 		guifg=#666666 guibg=#383838
-hi StatusLine 	guifg=#f6f3e8 guibg=#444444
+hi StatusLine 	guifg=#f8f8f0 guibg=#444444
 hi StatusLineNC guifg=#857b6f guibg=#444444
 hi VertSplit 	guifg=#444444 guibg=#444444
 hi Folded 		guibg=#384048 guifg=#a0a8b0
-hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold
-hi Visual		guifg=#f6f3e8 guibg=#444444
+hi Title		guifg=#f8f8f0 guibg=NONE	gui=bold
+hi Visual		guifg=#f8f8f0 guibg=#444444
 hi SpecialKey	guifg=#808080 guibg=#343434
 
 " Syntax highlighting
@@ -55,5 +55,5 @@ hi Visual       guibg=#303030
 " not used in Clojure (left as in wombat)
 hi Type 		guifg=#30c080
 hi Statement 	guifg=#8ac6f2
-hi Keyword		guifg=#a080e9
+hi Keyword		guifg=#ae81ff
 hi PreProc 		guifg=#e5786d
