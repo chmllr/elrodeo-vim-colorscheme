@@ -244,7 +244,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
 
     let s:uno_1 = s:blue_3
     let s:uno_2 = s:blue_1
-    let s:uno_3 = s:violet_0
+    let s:uno_3 = s:blue_3
     let s:uno_4 = s:violet_0
 
     let s:trio_1 = s:green_2
@@ -252,7 +252,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:trio_3 = s:green_1
 
     let s:syntax_fg               = '505050'
-    let s:syntax_bg               = 'b3baba'
+    let s:syntax_bg               = 'c3caca'
     let s:syntax_accent           = s:blue_3
     let s:syntax_gutter           = '636d83'
     let s:syntax_selection        = 'abb3b3'
