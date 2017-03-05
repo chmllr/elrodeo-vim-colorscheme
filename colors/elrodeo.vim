@@ -317,7 +317,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('PMenuSbar',    '',               s:syntax_bg,          '')
   call <sid>X('PMenuThumb',   '',               s:uno_1,              '')
   call <sid>X('Question',     s:syntax_accent,  '',                   '')
-  call <sid>X('Search',       s:syntax_bg,      s:uno_4,              '')
+  call <sid>X('Search',       s:syntax_bg,      s:duo_1,              '')
   call <sid>X('SpecialKey',   s:syntax_fold_bg, '',                   '')
   call <sid>X('StatusLine',   s:syntax_fg,      s:syntax_cursor_line, 'none')
   call <sid>X('StatusLineNC', s:uno_4,          '',                   '')
