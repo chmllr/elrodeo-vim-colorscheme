@@ -209,7 +209,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
 
   " sets the highlighting for the given group
   fun <SID>X(group, fg, bg, attr)
-    let l:attr = a:attr
+    let l:attr = 'none'
     if a:fg !=? ''
       exec 'hi ' . a:group . ' guifg=#' . a:fg . ' ctermfg=' . <SID>rgb(a:fg)
     endif
@@ -308,7 +308,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('LineNr',       s:syntax_fold_bg, s:syntax_selection, '')
   call <sid>X('CursorLineNr', s:uno_3,          s:syntax_cursor_line, 'none')
   call <sid>X('MatchParen',   s:syntax_bg,      s:syntax_accent,      '')
-  call <sid>X('Italic',       '',               '',                   'italic')
+  call <sid>X('none',       '',               '',                   'none')
   call <sid>X('ModeMsg',      s:syntax_fg,      '',                   '')
   call <sid>X('MoreMsg',      s:syntax_fg,      '',                   '')
   call <sid>X('NonText',      s:uno_4,          '',                   '')
@@ -336,12 +336,12 @@ let s:syntax_color_removed  = 'e05252'
   " }}}
 
   " Standard syntax highlighting --------------------------------------------{{{
-  call <sid>X('Comment',        s:syntax_fold_bg, '',          'italic')
-  call <sid>X('Constant',       s:trio_2,         '',          '')
-  call <sid>X('String',         s:string,          '',          'italic')
+  call <sid>X('Comment',        s:syntax_fold_bg,'',          'none')
+  call <sid>X('Constant',       s:trio_2,        '',          '')
+  call <sid>X('String',         s:string,        '',          'none')
   call <sid>X('Character',      s:duo_2,         '',          '')
   call <sid>X('Number',         s:duo_1,         '',          '')
-  call <sid>X('Boolean',        s:violet_0,         '',          '')
+  call <sid>X('Boolean',        s:violet_0,      '',          '')
   call <sid>X('Float',          s:duo_2,         '',          '')
   call <sid>X('Identifier',     s:uno_3,         '',          '')
   call <sid>X('Function',       s:uno_2,         '',          'bold')
@@ -594,7 +594,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('rubyEscape',                    s:syntax_accent, '', '')
   call <sid>X('rubyFunction',                  s:uno_1,         '', '')
   call <sid>X('rubyGlobalVariable',            s:syntax_accent, '', '')
-  call <sid>X('rubyInclude',                   s:duo_2,         '', 'italic')
+  call <sid>X('rubyInclude',                   s:duo_2,         '', 'none')
   call <sid>X('rubyIncluderubyGlobalVariable', s:syntax_accent, '', '')
   call <sid>X('rubyInstanceVariable',          s:syntax_accent, '', '')
   call <sid>X('rubyInterpolation',             s:duo_2,         '', '')
@@ -615,7 +615,7 @@ let s:syntax_color_removed  = 'e05252'
 
   " Vim highlighting --------------------------------------------------------{{{
   call <sid>X('vimHighlight',    s:duo_2, '', '')
-  call <sid>X('vimLineComment',  s:uno_4, '', 'italic')
+  call <sid>X('vimLineComment',  s:uno_4, '', 'none')
   call <sid>X('vimCommentTitle', s:uno_4, '', 'bold')
   call <sid>X('vimCommand',      s:uno_1, '', '')
   call <sid>X('vimVar',          s:duo_2, '', '')
