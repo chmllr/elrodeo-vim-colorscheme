@@ -8,8 +8,8 @@ Inpired and derived from the [ghostbuster](https://github.com/MvanDiemen/ghostbu
 
 ## Configuration
 
-```
-" sets th theme
+```viml
+" sets the theme
 colorscheme elrodeo
 " sets F10 as a switch between dark and light modes
 map <F10> :let &background = ( &background == "dark" ? "light" : "dark" )<CR>
