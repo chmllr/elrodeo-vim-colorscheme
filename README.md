@@ -1,7 +1,7 @@
 # README
 
 Elrodeo is a low contrast color scheme with dark and light modes.
-Inpired and derived from the [ghostbuster](https://github.com/MvanDiemen/ghostbuster) theme.
+Inspired and derived from the [ghostbuster](https://github.com/MvanDiemen/ghostbuster) theme.
 
 <img src="https://github.com/chmllr/elrodeo-vim-colorscheme/raw/master/dark.png" width="430" />
 <img src="https://github.com/chmllr/elrodeo-vim-colorscheme/raw/master/light.png" width="430" />
