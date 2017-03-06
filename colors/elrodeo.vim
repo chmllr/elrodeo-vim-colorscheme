@@ -256,7 +256,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:syntax_accent           = s:blue_3
     let s:syntax_gutter           = '636d83'
     let s:syntax_selection        = 'abb3b3'
-    let s:syntax_fold_bg          = '677c99'
+    let s:syntax_fold_bg          = '778ca9'
     let s:syntax_cursor_line      = 'a3aaaa'
     let s:string = '335588'
   else
@@ -277,8 +277,8 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:syntax_bg               = '333a3a'
     let s:syntax_accent           = s:blue_4
     let s:syntax_gutter           = '636d83'
-    let s:syntax_selection        = '2d3536'
-    let s:syntax_fold_bg          = '677c99'
+    let s:syntax_selection        = '1d2526'
+    let s:syntax_fold_bg          = '576c89'
     let s:syntax_cursor_line      = '232a2a'
     let s:string = '99bbdd'
   endif
@@ -305,7 +305,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('Folded',       s:syntax_bg,      s:syntax_fold_bg,     '')
   call <sid>X('FoldColumn',   '',               s:uno_4,              '')
   call <sid>X('IncSearch',    s:syntax_bg,      s:uno_4,              '')
-  call <sid>X('LineNr',       s:syntax_fold_bg, s:syntax_selection, '')
+  call <sid>X('LineNr',       s:syntax_gutter, s:syntax_cursor_line,  '')
   call <sid>X('CursorLineNr', s:uno_3,          s:syntax_cursor_line, 'none')
   call <sid>X('MatchParen',   s:syntax_bg,      s:syntax_accent,      '')
   call <sid>X('none',       '',               '',                   'none')
