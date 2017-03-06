@@ -284,8 +284,8 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   endif
 
 let s:syntax_color_renamed  = '33a0ff'
-let s:syntax_color_added    = '43d08a'
-let s:syntax_color_modified = 'e0c285'
+let s:syntax_color_added    = s:duo_2
+let s:syntax_color_modified = s:uno_1
 let s:syntax_color_removed  = 'e05252'
 
 
