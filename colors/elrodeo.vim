@@ -252,7 +252,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:trio_3 = s:green_1
 
     let s:syntax_fg               = '505050'
-    let s:syntax_bg               = 'c3caca'
+    let s:syntax_bg               = 'd0d5d5'
     let s:syntax_accent           = s:blue_3
     let s:syntax_gutter           = '636d83'
     let s:syntax_selection        = 'abb3b3'
