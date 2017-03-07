@@ -257,7 +257,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:syntax_gutter           = '636d83'
     let s:syntax_selection        = 'abb3b3'
     let s:syntax_fold_bg          = '778ca9'
-    let s:syntax_cursor_line      = 'a3aaaa'
+    let s:syntax_cursor_line      = 'b8bfbf'
     let s:string = '335588'
   else
     let s:duo_1 = s:green_2
