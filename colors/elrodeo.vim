@@ -242,10 +242,10 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:duo_2 = s:green_3
     let s:duo_3 = s:green_2
 
-    let s:uno_1 = s:blue_3
+    let s:uno_1 = s:violet_0
     let s:uno_2 = s:blue_1
     let s:uno_3 = s:blue_3
-    let s:uno_4 = s:violet_0
+    let s:uno_4 = s:blue_3
 
     let s:trio_1 = s:green_2
     let s:trio_2 = s:green_2
@@ -255,7 +255,6 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:syntax_bg               = 'd0d5d5'
     let s:syntax_accent           = s:blue_3
     let s:syntax_gutter           = '636d83'
-    let s:syntax_selection        = 'abb3b3'
     let s:syntax_fold_bg          = '778ca9'
     let s:syntax_cursor_line      = 'b8bfbf'
     let s:string = '335588'
@@ -277,7 +276,6 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     let s:syntax_bg               = '333a3a'
     let s:syntax_accent           = s:blue_4
     let s:syntax_gutter           = '636d83'
-    let s:syntax_selection        = '1d2526'
     let s:syntax_fold_bg          = '576c89'
     let s:syntax_cursor_line      = '232a2a'
     let s:string = '99bbdd'
@@ -312,7 +310,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('ModeMsg',      s:syntax_fg,      '',                   '')
   call <sid>X('MoreMsg',      s:syntax_fg,      '',                   '')
   call <sid>X('NonText',      s:uno_4,          '',                   '')
-  call <sid>X('PMenu',        '',               s:syntax_selection,   '')
+  call <sid>X('PMenu',        '',               s:syntax_cursor_line,   '')
   call <sid>X('PMenuSel',     '',               s:syntax_bg,          '')
   call <sid>X('PMenuSbar',    '',               s:syntax_bg,          '')
   call <sid>X('PMenuThumb',   '',               s:uno_1,              '')
@@ -325,8 +323,8 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('TabLineFill',  '',               '',                   'none')
   call <sid>X('TabLineSel',   s:syntax_fg,      '',                   '')
   call <sid>X('Title',        s:duo_2,          '',                   'bold')
-  call <sid>X('Visual',       '',               s:syntax_selection,   '')
-  call <sid>X('VisualNOS',    '',               s:syntax_selection,   '')
+  call <sid>X('Visual',       '',               s:syntax_cursor_line,   '')
+  call <sid>X('VisualNOS',    '',               s:syntax_cursor_line,   '')
   call <sid>X('WarningMsg',   s:syntax_accent,  '',                   '')
   call <sid>X('TooLong',      s:syntax_accent,  '',                   '')
   call <sid>X('WildMenu',     s:syntax_fg,      s:uno_4,              '')
@@ -374,15 +372,15 @@ let s:syntax_color_removed  = 'e05252'
   " }}}
 
   " Diff highlighting -------------------------------------------------------{{{
-  call <sid>X('DiffAdd',     s:syntax_color_added,    s:syntax_selection, '')
-  call <sid>X('DiffChange',  s:syntax_color_modified, s:syntax_selection, '')
-  call <sid>X('DiffDelete',  s:syntax_color_removed,  s:syntax_selection, '')
-  call <sid>X('DiffText',    s:uno_2,                 s:syntax_selection, '')
-  call <sid>X('DiffAdded',   s:duo_2,                 s:syntax_selection, '')
-  call <sid>X('DiffFile',    s:syntax_accent,         s:syntax_selection, '')
-  call <sid>X('DiffNewFile', s:duo_2,                 s:syntax_selection, '')
-  call <sid>X('DiffLine',    s:uno_2,                 s:syntax_selection, '')
-  call <sid>X('DiffRemoved', s:syntax_accent,         s:syntax_selection, '')
+  call <sid>X('DiffAdd',     s:syntax_color_added,    s:syntax_cursor_line, '')
+  call <sid>X('DiffChange',  s:syntax_color_modified, s:syntax_cursor_line, '')
+  call <sid>X('DiffDelete',  s:syntax_color_removed,  s:syntax_cursor_line, '')
+  call <sid>X('DiffText',    s:uno_4,                 s:syntax_cursor_line, '')
+  call <sid>X('DiffAdded',   s:duo_2,                 s:syntax_cursor_line, '')
+  call <sid>X('DiffFile',    s:syntax_accent,         s:syntax_cursor_line, '')
+  call <sid>X('DiffNewFile', s:duo_2,                 s:syntax_cursor_line, '')
+  call <sid>X('DiffLine',    s:uno_2,                 s:syntax_cursor_line, '')
+  call <sid>X('DiffRemoved', s:syntax_accent,         s:syntax_cursor_line, '')
   " }}}
 
   " Asciidoc highlighting ---------------------------------------------------{{{
