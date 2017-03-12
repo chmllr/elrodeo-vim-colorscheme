@@ -293,7 +293,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('bold',         '',               '',                   'bold')
   call <sid>X('ColorColumn',  '',               s:syntax_cursor_line, '')
   call <sid>X('Conceal',      '',               '',                   '')
-  call <sid>X('Cursor',       s:syntax_bg,      s:syntax_accent,      '')
+  call <sid>X('Cursor',       s:syntax_bg,      s:duo_1,              '')
   call <sid>X('CursorIM',     '',               '',                   '')
   call <sid>X('CursorColumn', '',               s:syntax_cursor_line, '')
   call <sid>X('CursorLine',   '',               s:syntax_cursor_line, '')
