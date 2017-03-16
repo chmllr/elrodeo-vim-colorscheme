@@ -297,7 +297,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('CursorIM',     '',               '',                   '')
   call <sid>X('CursorColumn', '',               s:syntax_cursor_line, '')
   call <sid>X('CursorLine',   '',               s:syntax_cursor_line, '')
-  call <sid>X('Directory',    s:uno_1,          '',                   '')
+  call <sid>X('Directory',    s:duo_2,          '',                   '')
   call <sid>X('ErrorMsg',     s:syntax_accent,  s:syntax_bg,          'none')
   call <sid>X('VertSplit',    s:syntax_fold_bg, '',                   'none')
   call <sid>X('Folded',       s:syntax_bg,      s:syntax_fold_bg,     '')
