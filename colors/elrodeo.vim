@@ -375,7 +375,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('DiffAdd',     s:syntax_color_added,    s:syntax_cursor_line, '')
   call <sid>X('DiffChange',  s:syntax_color_modified, s:syntax_cursor_line, '')
   call <sid>X('DiffDelete',  s:syntax_color_removed,  s:syntax_cursor_line, '')
-  call <sid>X('DiffText',    s:uno_4,                 s:syntax_cursor_line, '')
+  call <sid>X('DiffText',    s:uno_3,                 s:syntax_cursor_line, '')
   call <sid>X('DiffAdded',   s:duo_2,                 s:syntax_cursor_line, '')
   call <sid>X('DiffFile',    s:syntax_accent,         s:syntax_cursor_line, '')
   call <sid>X('DiffNewFile', s:duo_2,                 s:syntax_cursor_line, '')
