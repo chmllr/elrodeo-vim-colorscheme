@@ -1,7 +1,7 @@
 " Name:    Elrodeo (based on github.com/MvanDiemen/ghostbuster)
 " Author:  Christian Müller
 " License: MIT
-" Version: 3.0.0
+" Version: 4.0.0
 
 " Global setup =============================================================={{{
 
@@ -354,7 +354,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('Include',        s:duo_2,         '',          '')
   call <sid>X('Define',         s:duo_1,         '',          'none')
   call <sid>X('Macro',          s:uno_3,         '',          '')
-  call <sid>X('PreCondit',      'ff0000',        '',          '')
+  call <sid>X('PreCondit',      s:duo_3,        '',          '')
   call <sid>X('Type',           s:duo_1,         '',          'bold')
   call <sid>X('StorageClass',   s:duo_2,         '',          '')
   call <sid>X('Structure',      s:uno_1,         '',          '')
