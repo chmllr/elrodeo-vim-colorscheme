@@ -1,7 +1,7 @@
 " Name:    Elrodeo (based on github.com/MvanDiemen/ghostbuster)
 " Author:  Christian Müller
 " License: MIT
-" Version: 4.0.0
+" Version: 4.0.1
 
 " Global setup =============================================================={{{
 
@@ -347,7 +347,7 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('Conditional',    s:syntax_accent, '',          'bold')
   call <sid>X('Repeat',         s:duo_2,         '',          '')
   call <sid>X('Label',          s:uno_1,         '',          'bold')
-  call <sid>X('Operator',       '',              '',          'none')
+  call <sid>X('Operator',       s:uno_2,         '',          'none')
   call <sid>X('Keyword',        s:uno_1,         '',          '')
   call <sid>X('Exception',      s:uno_1,         '',          '')
   call <sid>X('PreProc',        s:uno_1,         '',          '')
