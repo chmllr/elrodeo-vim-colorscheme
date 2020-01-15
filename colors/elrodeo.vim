@@ -1,7 +1,7 @@
 " Name:    Elrodeo (based on github.com/MvanDiemen/ghostbuster)
 " Author:  Christian Müller
 " License: MIT
-" Version: 4.0.1
+" Version: 4.0.2
 
 " Global setup =============================================================={{{
 
