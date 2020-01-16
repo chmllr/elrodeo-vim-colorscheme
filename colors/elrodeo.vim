@@ -1,7 +1,7 @@
 " Name:    Elrodeo (based on github.com/MvanDiemen/ghostbuster)
 " Author:  Christian Müller
 " License: MIT
-" Version: 4.0.2
+" Version: 4.0.3
 
 " Global setup =============================================================={{{
 
@@ -424,42 +424,6 @@ let s:syntax_color_removed  = 'e05252'
   call <sid>X('cssClassNameDot',        s:uno_4,         '', '')
   call <sid>X('cssValueNumber',         s:duo_1,         '', '')
 
-  call <sid>X('sassAmpersand',          s:syntax_accent, '', '')
-  call <sid>X('sassClass',              s:uno_1,         '', '')
-  call <sid>X('sassControl',            s:duo_3,         '', '')
-  call <sid>X('sassExtend',             s:duo_3,         '', '')
-  call <sid>X('sassFor',                s:uno_1,         '', '')
-  call <sid>X('sassProperty',           s:uno_3,         '', '')
-  call <sid>X('sassFunction',           s:duo_1,         '', '')
-  call <sid>X('sassId',                 s:duo_2,         '', '')
-  call <sid>X('sassInclude',            s:uno_1,         '', '')
-  call <sid>X('sassMedia',              s:duo_3,         '', '')
-  call <sid>X('sassMediaOperators',     s:uno_1,         '', '')
-  call <sid>X('sassMixin',              s:duo_3,         '', '')
-  call <sid>X('sassMixinName',          s:duo_2,         '', '')
-  call <sid>X('sassMixing',             s:duo_3,         '', '')
-  call <sid>X('sassVariable',           s:uno_2,         '', '')
-  call <sid>X('sassVariableAssignment', s:uno_4,         '', '')
-  " }}}
-
-  " Cucumber highlighting ---------------------------------------------------{{{
-  call <sid>X('cucumberGiven',           s:duo_2,         '', '')
-  call <sid>X('cucumberWhen',            s:duo_2,         '', '')
-  call <sid>X('cucumberWhenAnd',         s:duo_2,         '', '')
-  call <sid>X('cucumberThen',            s:duo_2,         '', '')
-  call <sid>X('cucumberThenAnd',         s:duo_2,         '', '')
-  call <sid>X('cucumberUnparsed',        s:duo_1,         '', '')
-  call <sid>X('cucumberFeature',         s:syntax_accent, '', 'bold')
-  call <sid>X('cucumberBackground',      s:duo_2,         '', 'bold')
-  call <sid>X('cucumberScenario',        s:duo_2,         '', 'bold')
-  call <sid>X('cucumberScenarioOutline', s:duo_2,         '', 'bold')
-  call <sid>X('cucumberTags',            s:uno_4,         '', 'bold')
-  call <sid>X('cucumberDelimiter',       s:uno_4,         '', 'bold')
-  " }}}
-
-  " Elixir highlighting------------------------------------------------------{{{
-  call <sid>X('elixirBlockDefinition', s:duo_3, '', '')
-  call <sid>X('elixirAtom',            s:duo_1,'', '')
   " }}}
 
   " Go highlighting ---------------------------------------------------------{{{
@@ -576,32 +540,6 @@ let s:syntax_color_removed  = 'e05252'
 
   " NERDTree highlighting ---------------------------------------------------{{{
   call <sid>X('NERDTreeExecFile',      s:duo_1, '', '')
-  " }}}
-
-  " Ruby highlighting -------------------------------------------------------{{{
-  call <sid>X('rubyBlock',                     s:uno_2,         '', '')
-  call <sid>X('rubyBlockParameter',            s:uno_2,         '', '')
-  call <sid>X('rubyBlockParameterList',        s:uno_3,         '', '')
-  call <sid>X('rubyCapitalizedMethod',         s:duo_2,         '', '')
-  call <sid>X('rubyClass',                     s:trio_1,         '', '')
-  call <sid>X('rubyConstant',                  s:uno_3,         '', '')
-  call <sid>X('rubyControl',                   s:uno_1,         '', '')
-  call <sid>X('rubyConditionalModifier',       s:syntax_accent, '', '')
-  call <sid>X('rubyCurlyBlockDelimiter',       s:uno_4,         '', '')
-  call <sid>X('rubyDefine',                    s:duo_2,         '', '')
-  call <sid>X('rubyEscape',                    s:syntax_accent, '', '')
-  call <sid>X('rubyFunction',                  s:uno_1,         '', '')
-  call <sid>X('rubyGlobalVariable',            s:syntax_accent, '', '')
-  call <sid>X('rubyInclude',                   s:duo_2,         '', 'none')
-  call <sid>X('rubyIncluderubyGlobalVariable', s:syntax_accent, '', '')
-  call <sid>X('rubyInstanceVariable',          s:syntax_accent, '', '')
-  call <sid>X('rubyInterpolation',             s:duo_2,         '', '')
-  call <sid>X('rubyInterpolationDelimiter',    s:uno_4,         '', '')
-  call <sid>X('rubyModule',                    s:trio_2,         '', '')
-  call <sid>X('rubyRegexp',                    s:duo_1,         '', '')
-  call <sid>X('rubyRegexpDelimiter',           s:uno_4,         '', '')
-  call <sid>X('rubyStringDelimiter',           s:duo_3,         '', '')
-  call <sid>X('rubySymbol',                    s:duo_1,         '', '')
   " }}}
 
   " Spelling highlighting ---------------------------------------------------{{{
