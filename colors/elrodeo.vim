@@ -17,7 +17,7 @@ let s:white        = '#ffffff'
 let s:accent       = '#2d9885'
 let s:blue         = '#8fbadb'
 let s:purple       = '#9470ff'
-let s:red          = '#e05252'
+let s:orange       = '#ff8c00'
 
 " ==================================================================
 " HIGHLIGHT HELPER
@@ -56,15 +56,15 @@ call s:highlight_helper("Normal", s:fg, s:bg)
 " ==================================================================
 
 " USER ACTION NEEDED
-call s:highlight_helper("Error", s:red, "")
-call s:highlight_helper("ErrorMsg", s:red, "")
-call s:highlight_helper("WarningMsg", s:red, "")
-call s:highlight_helper("SpellBad", s:red, "")
-call s:highlight_helper("SpellCap", s:red, "")
-call s:highlight_helper("Todo", s:red, "")
-call s:highlight_helper("typescriptParenError", s:red, "")
-call s:highlight_helper("NeomakeErrorSign", s:red, "")
-call s:highlight_helper("NeomakeWarningSign", s:red, "")
+call s:highlight_helper("Error", s:orange, "")
+call s:highlight_helper("ErrorMsg", s:orange, "")
+call s:highlight_helper("WarningMsg", s:orange, "")
+call s:highlight_helper("SpellBad", s:orange, "")
+call s:highlight_helper("SpellCap", s:orange, "")
+call s:highlight_helper("Todo", s:orange, "")
+call s:highlight_helper("typescriptParenError", s:orange, "")
+call s:highlight_helper("NeomakeErrorSign", s:orange, "")
+call s:highlight_helper("NeomakeWarningSign", s:orange, "")
 
 " USER CURRENT STATE
 call s:highlight_helper("SignColumn", "NONE", s:bg)
@@ -94,12 +94,12 @@ call s:highlight_helper("gitcommitSummary", s:accent, "")
 " VERSION CONTROL
 call s:highlight_helper("DiffAdd", s:bg, s:accent)
 call s:highlight_helper("DiffChange", s:bg, s:blue)
-call s:highlight_helper("DiffDelete", s:red, "")
+call s:highlight_helper("DiffDelete", s:orange, "")
 call s:highlight_helper("DiffText", s:bg, s:blue)
 call s:highlight_helper("GitGutterAdd", s:accent, "")
 call s:highlight_helper("GitGutterChange", s:blue, "")
 call s:highlight_helper("GitGutterChangeDelete", s:blue, "")
-call s:highlight_helper("GitGutterDelete", s:red, "")
+call s:highlight_helper("GitGutterDelete", s:orange, "")
 
 " OTHER
 call s:highlight_helper("LineNr", s:fg_alt, "")
@@ -118,7 +118,7 @@ call s:highlight_helper("PmenuSbar", s:fg_alt, s:fg_alt)
 call s:highlight_helper("fzf1", s:bg, s:bg_alt)
 call s:highlight_helper("fzf2", s:bg, s:bg_alt)
 call s:highlight_helper("fzf3", s:bg, s:bg_alt)
-call s:highlight_helper("EasyMotionTarget", s:red, "")
+call s:highlight_helper("EasyMotionTarget", s:orange, "")
 call s:highlight_helper("EasyMotionTarget2First", s:accent, "")
 call s:highlight_helper("EasyMotionTarget2Second", s:accent, "")
 
@@ -142,7 +142,7 @@ call s:highlight_helper("Float", s:blue, "")
 call s:highlight_helper("Boolean", s:blue, "")
 
 " EXCEPTION
-call s:highlight_helper("Exception", s:red, "")
+call s:highlight_helper("Exception", s:orange, "")
 
 " OPERATOR
 call s:highlight_helper("Operator", s:purple, "")
@@ -383,7 +383,7 @@ call s:highlight_helper("LspReferenceWrite", "", s:cursor_line, "")
 " VIM TERMINAL MODE
 let g:terminal_ansi_colors = [
 \ s:bg,
-\ s:red,
+\ s:orange,
 \ s:accent,
 \ s:accent,
 \ s:blue,
@@ -402,7 +402,7 @@ let g:terminal_ansi_colors = [
 
 " NEOVIM TERMINAL MODE
 let g:terminal_color_0 = s:bg
-let g:terminal_color_1 = s:red
+let g:terminal_color_1 = s:orange
 let g:terminal_color_2 = s:accent
 let g:terminal_color_3 = s:accent
 let g:terminal_color_4 = s:blue
