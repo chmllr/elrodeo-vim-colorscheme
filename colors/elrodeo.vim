@@ -1,391 +1,290 @@
-" Name:    Elrodeo (based on github.com/MvanDiemen/ghostbuster)
+" Name:    Elrodeo (VSCode inspired)
 " Author:  Christian Müller
 " License: MIT
-" Version: 4.0.3
-
-" Global setup =============================================================={{{
+" Version: 5.0.1
+" Description: Modern Neovim colorscheme based on VSCode ElRodeo theme
 
 hi clear
-syntax reset
+if exists('syntax_on')
+  syntax reset
+endif
+
 let g:colors_name = 'elrodeo'
+set background=dark
 
-if has('gui_running') 
-  " Utility functions -------------------------------------------------------{{{
-  " sets the highlighting for the given group
-  fun <SID>X(group, fg, bg, attr)
-    let l:attr = 'none'
-    if a:fg !=? ''
-      exec 'hi ' . a:group . ' guifg=#' . a:fg
-    endif
-    if a:bg !=? ''
-      exec 'hi ' . a:group . ' guibg=#' . a:bg
-    endif
-    if a:attr !=? ''
-      exec 'hi ' . a:group . ' gui=' . l:attr . ' cterm=' . l:attr
-    endif
-  endfun
+" Terminal color support
+if has('termguicolors')
+  set termguicolors
+endif
 
-  "}}}
+" Color palette from VSCode ElRodeo theme 
+let s:colors = {
+\ 'bg':           '#334042',
+\ 'bg_alt':       '#455558',
+\ 'fg':           '#c0c0c0',
+\ 'fg_alt':       '#7a8590',
+\ 'white':        '#ffffff',
+\ 'accent':       '#2d9885',
+\ 'blue':         '#8fbadb',
+\ 'green':        '#96bdb4',
+\ 'purple':       '#9470ff',
+\ 'bright_green': '#20b070',
+\ 'red':          '#e05252',
+\ 'cursor_line':  '#394547',
+\ }
 
-  " Color definition --------------------------------------------------------{{{
-  let s:violet_0 = '835fdd'
-  let s:blue_1 = '4C7290'
-  let s:blue_2 = 'A9BFD1'
-  let s:blue_3 = '347BB2'
-  let s:blue_4 = '8FBADB'
+" Utility function for setting highlights
+function! s:Hi(group, fg, bg, attr)
+  let l:cmd = 'highlight ' . a:group
 
-  let s:green_0 = '20b070'
-  let s:green_1 = '82cdc0'
-  let s:green_2 = '2d9885'
-  let s:green_3 = '156d62'
-  let s:green_4 = '96bdb4'
-
-
-  if &background ==? 'light'
-    let s:duo_1 = s:green_2
-    let s:duo_2 = s:green_3
-    let s:duo_3 = s:green_2
-
-    let s:uno_1 = s:violet_0
-    let s:uno_2 = s:blue_1
-    let s:uno_3 = s:blue_3
-    let s:uno_4 = s:blue_3
-
-    let s:trio_1 = s:green_2
-    let s:trio_2 = s:green_2
-    let s:trio_3 = s:green_1
-
-    let s:syntax_fg               = '505050'
-    let s:syntax_bg               = 'd0d5d5'
-    let s:syntax_accent           = s:blue_3
-    let s:syntax_gutter           = '636d83'
-    let s:syntax_fold_bg          = '778ca9'
-    let s:syntax_cursor_line      = 'b8bfbf'
-    let s:string = '335588'
-  else
-    let s:duo_1 = s:green_2
-    let s:duo_2 = s:green_0
-    let s:duo_3 = s:green_1
-
-    let s:uno_1 = s:violet_0
-    let s:uno_2 = s:blue_1
-    let s:uno_3 = s:blue_2
-    let s:uno_4 = s:blue_3
-
-    let s:trio_1 = s:green_2
-    let s:trio_2 = s:green_3
-    let s:trio_3 = s:green_4
-
-    let s:syntax_fg               = 'b0b0b0'
-    let s:syntax_bg               = '333a3a'
-    let s:syntax_accent           = s:blue_4
-    let s:syntax_gutter           = '636d83'
-    let s:syntax_fold_bg          = '576c89'
-    let s:syntax_cursor_line      = '232a2a'
-    let s:string = '99bbdd'
+  if !empty(a:fg)
+    let l:cmd .= ' guifg=' . a:fg
   endif
 
-let s:syntax_color_renamed  = '33a0ff'
-let s:syntax_color_added    = s:duo_2
-let s:syntax_color_modified = s:uno_1
-let s:syntax_color_removed  = 'e05252'
+  if !empty(a:bg)
+    let l:cmd .= ' guibg=' . a:bg
+  endif
 
+  if !empty(a:attr)
+    let l:cmd .= ' gui=' . a:attr . ' cterm=' . a:attr
+  endif
 
-  "}}}
+  execute l:cmd
+endfunction
 
-  " Vim editor color --------------------------------------------------------{{{
-  call <sid>X('bold',         '',               '',                   'bold')
-  call <sid>X('ColorColumn',  '',               s:syntax_cursor_line, '')
-  call <sid>X('Conceal',      '',               '',                   '')
-  call <sid>X('Cursor',       s:syntax_bg,      s:syntax_fg,          '')
-  call <sid>X('CursorIM',     '',               '',                   '')
-  call <sid>X('CursorColumn', '',               s:syntax_cursor_line, '')
-  call <sid>X('CursorLine',   '',               s:syntax_cursor_line, '')
-  call <sid>X('Directory',    s:duo_2,          '',                   '')
-  call <sid>X('ErrorMsg',     s:syntax_accent,  s:syntax_bg,          'none')
-  call <sid>X('VertSplit',    s:syntax_fold_bg, '',                   'none')
-  call <sid>X('Folded',       s:syntax_bg,      s:syntax_fold_bg,     '')
-  call <sid>X('FoldColumn',   '',               s:uno_4,              '')
-  call <sid>X('IncSearch',    s:syntax_bg,      s:uno_4,              '')
-  call <sid>X('LineNr',       s:syntax_gutter, s:syntax_cursor_line,  '')
-  call <sid>X('CursorLineNr', s:uno_3,          s:syntax_cursor_line, 'none')
-  call <sid>X('MatchParen',   s:syntax_bg,      s:green_2,            '')
-  call <sid>X('none',         '',               '',                   'none')
-  call <sid>X('ModeMsg',      s:syntax_fg,      '',                   '')
-  call <sid>X('MoreMsg',      s:syntax_fg,      '',                   '')
-  call <sid>X('NonText',      s:uno_4,          '',                   '')
-  call <sid>X('PMenu',        '',               s:syntax_cursor_line, '')
-  call <sid>X('PMenuSel',     '',               s:syntax_bg,          '')
-  call <sid>X('PMenuSbar',    '',               s:syntax_bg,          '')
-  call <sid>X('PMenuThumb',   '',               s:uno_1,              '')
-  call <sid>X('Question',     s:syntax_accent,  '',                   '')
-  call <sid>X('Search',       s:syntax_bg,      s:duo_1,              '')
-  call <sid>X('SpecialKey',   s:syntax_fold_bg, '',                   '')
-  call <sid>X('StatusLine',   s:syntax_fg,      s:syntax_cursor_line, 'none')
-  call <sid>X('StatusLineNC', s:uno_4,          '',                   '')
-  call <sid>X('TabLine',      s:uno_4,          '',                   '')
-  call <sid>X('TabLineFill',  '',               '',                   'none')
-  call <sid>X('TabLineSel',   s:syntax_fg,      '',                   '')
-  call <sid>X('Title',        s:duo_2,          '',                   'bold')
-  call <sid>X('Visual',       '',               s:syntax_cursor_line, '')
-  call <sid>X('VisualNOS',    '',               s:syntax_cursor_line, '')
-  call <sid>X('WarningMsg',   s:syntax_accent,  '',                   '')
-  call <sid>X('TooLong',      s:syntax_accent,  '',                   '')
-  call <sid>X('WildMenu',     s:syntax_fg,      s:uno_4,              '')
-  call <sid>X('Normal',       s:syntax_fg,      s:syntax_bg,          '')
-  call <sid>X('SignColumn',   '',               s:uno_4,              '')
-  call <sid>X('Special',      s:duo_1,          '',                   '')
-  " }}}
+" Editor UI
+call s:Hi('Normal',       s:colors.fg,       s:colors.bg,       '')
+call s:Hi('NormalFloat',  s:colors.fg,       s:colors.bg_alt,   '')
+call s:Hi('Cursor',       s:colors.bg,       s:colors.white,    '')
+call s:Hi('CursorLine',   '',                s:colors.cursor_line, '')
+call s:Hi('CursorLineNr', s:colors.accent,   s:colors.cursor_line, '')
+call s:Hi('LineNr',       s:colors.fg_alt,   '',                '')
+call s:Hi('SignColumn',   '',                s:colors.bg,       '')
+call s:Hi('ColorColumn',  '',                s:colors.cursor_line, '')
+call s:Hi('VertSplit',    s:colors.fg_alt,   '',                'none')
+call s:Hi('StatusLine',   s:colors.fg,       s:colors.bg_alt,   'none')
+call s:Hi('StatusLineNC', s:colors.fg_alt,   s:colors.bg,       'none')
+call s:Hi('TabLine',      s:colors.fg_alt,   s:colors.bg_alt,   '')
+call s:Hi('TabLineFill',  s:colors.fg_alt,   s:colors.bg_alt,   '')
+call s:Hi('TabLineSel',   s:colors.fg,       s:colors.bg,       '')
 
-  " Standard syntax highlighting --------------------------------------------{{{
-  call <sid>X('Comment',        s:syntax_fold_bg,'',          'none')
-  call <sid>X('Constant',       s:trio_2,        '',          '')
-  call <sid>X('String',         s:string,        '',          'none')
-  call <sid>X('Character',      s:duo_2,         '',          '')
-  call <sid>X('Number',         s:duo_1,         '',          '')
-  call <sid>X('Boolean',        s:violet_0,      '',          '')
-  call <sid>X('Float',          s:duo_2,         '',          '')
-  call <sid>X('Identifier',     s:uno_3,         '',          '')
-  call <sid>X('Function',       s:uno_2,         '',          'bold')
-  call <sid>X('Statement',      s:duo_2,         '',          '')
-  call <sid>X('Conditional',    s:syntax_accent, '',          'bold')
-  call <sid>X('Repeat',         s:duo_2,         '',          '')
-  call <sid>X('Label',          s:uno_1,         '',          'bold')
-  call <sid>X('Operator',       s:uno_2,         '',          'none')
-  call <sid>X('Keyword',        s:uno_1,         '',          '')
-  call <sid>X('Exception',      s:uno_1,         '',          '')
-  call <sid>X('PreProc',        s:uno_1,         '',          '')
-  call <sid>X('Include',        s:duo_2,         '',          '')
-  call <sid>X('Define',         s:duo_1,         '',          'none')
-  call <sid>X('Macro',          s:uno_3,         '',          '')
-  call <sid>X('PreCondit',      s:duo_3,        '',          '')
-  call <sid>X('Type',           s:duo_1,         '',          'bold')
-  call <sid>X('StorageClass',   s:duo_2,         '',          '')
-  call <sid>X('Structure',      s:uno_1,         '',          '')
-  call <sid>X('Typedef',        s:uno_1,         '',          '')
-  call <sid>X('Special',        s:uno_3,         '',          '')
-  call <sid>X('SpecialChar',    '',              '',          '')
-  call <sid>X('Tag',            '',              '',          '')
-  call <sid>X('Delimiter',      s:uno_1,         '',          '')
-  call <sid>X('SpecialComment', '',              '',          '')
-  call <sid>X('Debug',          '',              '',          '')
-  call <sid>X('Underlined',     s:duo_1,         '',          'underline')
-  call <sid>X('Ignore',         '',              '',          '')
-  call <sid>X('Error',          s:syntax_accent, s:syntax_bg, 'bold')
-  call <sid>X('Todo',           s:duo_2,         s:syntax_bg, '')
-  " }}}
+" Visual and selection
+call s:Hi('Visual',       '',                s:colors.bg_alt,   '')
+call s:Hi('VisualNOS',    '',                s:colors.bg_alt,   '')
+call s:Hi('Search',       s:colors.bg,       s:colors.accent,   '')
+call s:Hi('IncSearch',    s:colors.bg,       s:colors.accent,   '')
 
-  " Diff highlighting -------------------------------------------------------{{{
-  call <sid>X('DiffAdd',     s:syntax_color_added,    s:syntax_cursor_line, '')
-  call <sid>X('DiffChange',  s:syntax_color_modified, s:syntax_cursor_line, '')
-  call <sid>X('DiffDelete',  s:syntax_color_removed,  s:syntax_cursor_line, '')
-  call <sid>X('DiffText',    s:uno_3,                 s:syntax_cursor_line, '')
-  call <sid>X('DiffAdded',   s:duo_2,                 s:syntax_cursor_line, '')
-  call <sid>X('DiffFile',    s:syntax_accent,         s:syntax_cursor_line, '')
-  call <sid>X('DiffNewFile', s:duo_2,                 s:syntax_cursor_line, '')
-  call <sid>X('DiffLine',    s:uno_2,                 s:syntax_cursor_line, '')
-  call <sid>X('DiffRemoved', s:syntax_accent,         s:syntax_cursor_line, '')
-  " }}}
+" Popup menu
+call s:Hi('Pmenu',        s:colors.fg,       s:colors.bg_alt,   '')
+call s:Hi('PmenuSel',     s:colors.accent,   s:colors.bg,       '')
+call s:Hi('PmenuSbar',    '',                s:colors.bg_alt,   '')
+call s:Hi('PmenuThumb',   '',                s:colors.accent,   '')
 
-  " Asciidoc highlighting ---------------------------------------------------{{{
-  call <sid>X('asciidocListingBlock',   s:uno_2,  '', '')
-  " }}}
+" Folding
+call s:Hi('Folded',       s:colors.fg_alt,   s:colors.bg_alt,   '')
+call s:Hi('FoldColumn',   s:colors.fg_alt,   '',                '')
 
-  " C/C++ and other languages like that -------------------------------------{{{
-  "call <sid>X('cCustomParen',           s:uno_4,         '', '')
-  " }}}
+" Diff
+call s:Hi('DiffAdd',      s:colors.bright_green, s:colors.bg_alt, '')
+call s:Hi('DiffChange',   s:colors.blue,     s:colors.bg_alt,   '')
+call s:Hi('DiffDelete',   s:colors.red,      s:colors.bg_alt,   '')
+call s:Hi('DiffText',     s:colors.bg,       s:colors.accent,   '')
 
-  " CSS/Sass highlighting ---------------------------------------------------{{{
-  call <sid>X('cssAttrComma',           s:duo_3,         '', '')
-  call <sid>X('cssAttributeSelector',   s:duo_2,         '', '')
-  call <sid>X('cssBraces',              s:uno_4,         '', '')
-  call <sid>X('cssClassName',           s:uno_1,         '', '')
-  call <sid>X('cssClassNameDot',        s:uno_1,         '', '')
-  call <sid>X('cssDefinition',          s:duo_3,         '', '')
-  call <sid>X('cssFlexibleBoxAttr',     s:duo_1,         '', '')
-  call <sid>X('cssBorderAttr',          s:duo_1,         '', '')
-  call <sid>X('cssPositioningAttr',     s:duo_1,         '', '')
-  call <sid>X('cssTransitionAttr',      s:duo_1,         '', '')
-  call <sid>X('cssCommonAttr',          s:duo_1,         '', '')
-  call <sid>X('cssBoxAttr',             s:duo_1,         '', '')
-  call <sid>X('cssFontAttr',            s:duo_1,         '', '')
-  call <sid>X('cssTextAttr',            s:duo_1,         '', '')
-  call <sid>X('cssFontDescriptor',      s:uno_1,         '', '')
-  call <sid>X('cssFunctionName',        s:uno_3,         '', '')
-  call <sid>X('cssIdentifier',          s:duo_1,         '', '')
-  call <sid>X('cssImportant',           s:duo_1,         '', '')
-  call <sid>X('cssUnitDecorators',      s:duo_2,         '', '')
-  call <sid>X('cssInclude',             s:uno_1,         '', '')
-  call <sid>X('cssIncludeKeyword',      s:duo_3,         '', '')
-  call <sid>X('cssMediaType',           s:uno_1,         '', '')
-  call <sid>X('cssProp',                s:uno_3,         '', '')
-  call <sid>X('cssPseudoClassId',       s:uno_1,         '', '')
-  call <sid>X('cssSelectorOp',          s:duo_3,         '', '')
-  call <sid>X('cssSelectorOp2',         s:duo_3,         '', '')
-  call <sid>X('cssStringQ',             s:duo_1,         '', '')
-  call <sid>X('cssStringQQ',            s:duo_1,         '', '')
-  call <sid>X('cssTagName',             s:uno_1,         '', '')
-  call <sid>X('cssClassNameDot',        s:uno_4,         '', '')
-  call <sid>X('cssValueNumber',         s:duo_1,         '', '')
+" Messages and prompts
+call s:Hi('ErrorMsg',     s:colors.red,      s:colors.bg,       '')
+call s:Hi('WarningMsg',   s:colors.blue,     s:colors.bg,       '')
+call s:Hi('ModeMsg',      s:colors.accent,   '',                '')
+call s:Hi('MoreMsg',      s:colors.accent,   '',                '')
+call s:Hi('Question',     s:colors.accent,   '',                '')
 
-  " }}}
+" Misc
+call s:Hi('MatchParen',   s:colors.bg,       s:colors.accent,   '')
+call s:Hi('NonText',      s:colors.fg_alt,   '',                '')
+call s:Hi('SpecialKey',   s:colors.fg_alt,   '',                '')
+call s:Hi('Directory',    s:colors.accent,   '',                '')
+call s:Hi('Title',        s:colors.accent,   '',                '')
+call s:Hi('Conceal',      s:colors.fg_alt,   '',                '')
 
-  " Go highlighting ---------------------------------------------------------{{{
-  call <sid>X('goDeclaration',         s:duo_3, '', '')
-  " }}}
+" Syntax highlighting
+call s:Hi('Comment',        s:colors.fg_alt,     '',               'italic')
+call s:Hi('Constant',       s:colors.green,      '',               '')
+call s:Hi('String',         s:colors.blue,       '',               '')
+call s:Hi('Character',      s:colors.blue,       '',               '')
+call s:Hi('Number',         s:colors.green,      '',               '')
+call s:Hi('Boolean',        s:colors.purple,     '',               '')
+call s:Hi('Float',          s:colors.green,      '',               '')
+call s:Hi('Identifier',     s:colors.fg,         '',               '')
+call s:Hi('Function',       s:colors.purple,     '',               '')
+call s:Hi('Statement',      s:colors.bright_green, '',             '')
+call s:Hi('Conditional',    s:colors.bright_green, '',             '')
+call s:Hi('Repeat',         s:colors.bright_green, '',             '')
+call s:Hi('Label',          s:colors.purple,     '',               '')
+call s:Hi('Operator',       s:colors.accent,     '',               '')
+call s:Hi('Keyword',        s:colors.bright_green, '',             '')
+call s:Hi('Exception',      s:colors.red,        '',               '')
+call s:Hi('PreProc',        s:colors.purple,     '',               '')
+call s:Hi('Include',        s:colors.purple,     '',               '')
+call s:Hi('Define',         s:colors.purple,     '',               '')
+call s:Hi('Macro',          s:colors.purple,     '',               '')
+call s:Hi('PreCondit',      s:colors.purple,     '',               '')
+call s:Hi('Type',           s:colors.accent,     '',               '')
+call s:Hi('StorageClass',   s:colors.bright_green, '',             '')
+call s:Hi('Structure',      s:colors.accent,     '',               '')
+call s:Hi('Typedef',        s:colors.accent,     '',               '')
+call s:Hi('Special',        s:colors.accent,     '',               '')
+call s:Hi('SpecialChar',    s:colors.blue,       '',               '')
+call s:Hi('Tag',            s:colors.accent,     '',               '')
+call s:Hi('Delimiter',      s:colors.fg,         '',               '')
+call s:Hi('SpecialComment', s:colors.fg_alt,     '',               'italic')
+call s:Hi('Debug',          s:colors.red,        '',               '')
+call s:Hi('Underlined',     s:colors.accent,     '',               'underline')
+call s:Hi('Ignore',         s:colors.fg_alt,     '',               '')
+call s:Hi('Error',          s:colors.red,        '',               '')
+call s:Hi('Todo',           s:colors.bg,         s:colors.accent,  '')
 
-  " Git and git related plugins highlighting --------------------------------{{{
-  call <sid>X('gitcommitComment',       s:uno_4,         '', '')
-  call <sid>X('gitcommitUnmerged',      s:duo_2,         '', '')
-  call <sid>X('gitcommitOnBranch',      '',              '', '')
-  call <sid>X('gitcommitBranch',        s:duo_3,         '', '')
-  call <sid>X('gitcommitDiscardedType', s:syntax_accent, '', '')
-  call <sid>X('gitcommitSelectedType',  s:duo_2,         '', '')
-  call <sid>X('gitcommitHeader',        '',              '', '')
-  call <sid>X('gitcommitUntrackedFile', s:duo_2,         '', '')
-  call <sid>X('gitcommitDiscardedFile', s:syntax_accent, '', '')
-  call <sid>X('gitcommitSelectedFile',  s:duo_2,         '', '')
-  call <sid>X('gitcommitUnmergedFile',  s:uno_1,         '', '')
-  call <sid>X('gitcommitFile',          '',              '', '')
-  hi link gitcommitNoBranch       gitcommitBranch
-  hi link gitcommitUntracked      gitcommitComment
-  hi link gitcommitDiscarded      gitcommitComment
-  hi link gitcommitSelected       gitcommitComment
-  hi link gitcommitDiscardedArrow gitcommitDiscardedFile
-  hi link gitcommitSelectedArrow  gitcommitSelectedFile
-  hi link gitcommitUnmergedArrow  gitcommitUnmergedFile
+" Modern Neovim features
+" LSP
+call s:Hi('LspReferenceText',                  '',                s:colors.bg_alt,     '')
+call s:Hi('LspReferenceRead',                  '',                s:colors.bg_alt,     '')
+call s:Hi('LspReferenceWrite',                 '',                s:colors.bg_alt,     '')
+call s:Hi('LspSignatureActiveParameter',       s:colors.accent,   s:colors.bg_alt,     '')
 
-  call <sid>X('SignifySignAdd',    s:duo_2,         '', '')
-  call <sid>X('SignifySignChange', s:uno_1,         '', '')
-  call <sid>X('SignifySignDelete', s:syntax_accent, '', '')
-  hi link GitGutterAdd    SignifySignAdd
-  hi link GitGutterChange SignifySignChange
-  hi link GitGutterDelete SignifySignDelete
-  call <sid>X('diffAdded',   s:duo_2,         '', '')
-  call <sid>X('diffRemoved', s:syntax_accent, '', '')
-  " }}}
+" Diagnostics
+call s:Hi('DiagnosticError',                   s:colors.red,      '',                  '')
+call s:Hi('DiagnosticWarn',                    s:colors.blue,     '',                  '')
+call s:Hi('DiagnosticInfo',                    s:colors.accent,   '',                  '')
+call s:Hi('DiagnosticHint',                    s:colors.green,    '',                  '')
+call s:Hi('DiagnosticSignError',               s:colors.red,      '',                  '')
+call s:Hi('DiagnosticSignWarn',                s:colors.blue,     '',                  '')
+call s:Hi('DiagnosticSignInfo',                s:colors.accent,   '',                  '')
+call s:Hi('DiagnosticSignHint',                s:colors.green,    '',                  '')
+call s:Hi('DiagnosticUnderlineError',          '',                '',                  'undercurl')
+call s:Hi('DiagnosticUnderlineWarn',           '',                '',                  'undercurl')
+call s:Hi('DiagnosticUnderlineInfo',           '',                '',                  'undercurl')
+call s:Hi('DiagnosticUnderlineHint',           '',                '',                  'undercurl')
 
-  " HTML highlighting -------------------------------------------------------{{{
-  call <sid>X('htmlArg',            s:uno_2, '', '')
-  call <sid>X('htmlTagName',        s:uno_1, '', '')
-  call <sid>X('htmlSpecialTagName', s:uno_1, '', '')
-  call <sid>X('htmlTag',            s:uno_4, '', '')
+" Treesitter
+call s:Hi('@variable',                         s:colors.fg,       '',                  '')
+call s:Hi('@variable.builtin',                 s:colors.purple,   '',                  '')
+call s:Hi('@variable.parameter',               s:colors.fg,       '',                  'italic')
+call s:Hi('@variable.member',                  s:colors.accent,   '',                  '')
+call s:Hi('@constant',                         s:colors.green,    '',                  '')
+call s:Hi('@constant.builtin',                 s:colors.purple,   '',                  '')
+call s:Hi('@constant.macro',                   s:colors.purple,   '',                  '')
+call s:Hi('@module',                           s:colors.accent,   '',                  '')
+call s:Hi('@module.builtin',                   s:colors.purple,   '',                  '')
+call s:Hi('@label',                            s:colors.purple,   '',                  '')
+call s:Hi('@string',                           s:colors.blue,     '',                  '')
+call s:Hi('@string.documentation',             s:colors.blue,     '',                  'italic')
+call s:Hi('@string.regexp',                    s:colors.green,    '',                  '')
+call s:Hi('@string.escape',                    s:colors.accent,   '',                  '')
+call s:Hi('@string.special',                   s:colors.accent,   '',                  '')
+call s:Hi('@character',                        s:colors.blue,     '',                  '')
+call s:Hi('@character.special',                s:colors.accent,   '',                  '')
+call s:Hi('@boolean',                          s:colors.purple,   '',                  '')
+call s:Hi('@number',                           s:colors.green,    '',                  '')
+call s:Hi('@number.float',                     s:colors.green,    '',                  '')
+call s:Hi('@type',                             s:colors.accent,   '',                  '')
+call s:Hi('@type.builtin',                     s:colors.purple,   '',                  '')
+call s:Hi('@type.definition',                  s:colors.accent,   '',                  '')
+call s:Hi('@attribute',                        s:colors.purple,   '',                  '')
+call s:Hi('@property',                         s:colors.accent,   '',                  '')
+call s:Hi('@function',                         s:colors.purple,   '',                  '')
+call s:Hi('@function.builtin',                 s:colors.purple,   '',                  '')
+call s:Hi('@function.call',                    s:colors.purple,   '',                  '')
+call s:Hi('@function.macro',                   s:colors.purple,   '',                  '')
+call s:Hi('@method',                           s:colors.purple,   '',                  '')
+call s:Hi('@method.call',                      s:colors.purple,   '',                  '')
+call s:Hi('@constructor',                      s:colors.accent,   '',                  '')
+call s:Hi('@operator',                         s:colors.accent,   '',                  '')
+call s:Hi('@keyword',                          s:colors.bright_green, '',              '')
+call s:Hi('@keyword.coroutine',                s:colors.bright_green, '',              '')
+call s:Hi('@keyword.function',                 s:colors.bright_green, '',              '')
+call s:Hi('@keyword.operator',                 s:colors.bright_green, '',              '')
+call s:Hi('@keyword.return',                   s:colors.bright_green, '',              '')
+call s:Hi('@keyword.exception',                s:colors.red,      '',                  '')
+call s:Hi('@conditional',                      s:colors.bright_green, '',              '')
+call s:Hi('@conditional.ternary',              s:colors.bright_green, '',              '')
+call s:Hi('@repeat',                           s:colors.bright_green, '',              '')
+call s:Hi('@debug',                            s:colors.red,      '',                  '')
+call s:Hi('@exception',                        s:colors.red,      '',                  '')
+call s:Hi('@include',                          s:colors.purple,   '',                  '')
+call s:Hi('@preproc',                          s:colors.purple,   '',                  '')
+call s:Hi('@define',                           s:colors.purple,   '',                  '')
+call s:Hi('@macro',                            s:colors.purple,   '',                  '')
+call s:Hi('@storageclass',                     s:colors.bright_green, '',              '')
+call s:Hi('@structure',                        s:colors.accent,   '',                  '')
+call s:Hi('@namespace',                        s:colors.accent,   '',                  '')
+call s:Hi('@annotation',                       s:colors.purple,   '',                  '')
+call s:Hi('@error',                            s:colors.red,      '',                  '')
+call s:Hi('@warning',                          s:colors.blue,     '',                  '')
+call s:Hi('@danger',                           s:colors.red,      '',                  '')
+call s:Hi('@note',                             s:colors.accent,   '',                  '')
 
-  call <sid>X('liquidDelimiter',    s:uno_4, '', '')
-  call <sid>X('liquidKeyword',      s:uno_3, '', '')
-  " }}}
+" Git signs
+call s:Hi('GitSignsAdd',                       s:colors.bright_green, '',              '')
+call s:Hi('GitSignsChange',                    s:colors.blue,     '',                  '')
+call s:Hi('GitSignsDelete',                    s:colors.red,      '',                  '')
 
-  " JavaScript highlighting -------------------------------------------------{{{
-  call <sid>X('coffeeString',           s:duo_2,         '', '')
+" Telescope
+call s:Hi('TelescopeBorder',                   s:colors.fg_alt,   '',                  '')
+call s:Hi('TelescopePromptBorder',             s:colors.accent,   '',                  '')
+call s:Hi('TelescopeResultsBorder',            s:colors.fg_alt,   '',                  '')
+call s:Hi('TelescopePreviewBorder',            s:colors.fg_alt,   '',                  '')
+call s:Hi('TelescopeMatching',                 s:colors.accent,   '',                  '')
+call s:Hi('TelescopeSelection',                '',                s:colors.bg_alt,     '')
+call s:Hi('TelescopeSelectionCaret',           s:colors.accent,   s:colors.bg_alt,     '')
 
-  call <sid>X('javaScriptBraces',       s:uno_4,         '', '')
-  call <sid>X('javaScriptFunction',     s:duo_3,         '', '')
-  call <sid>X('javaScriptIdentifier',   s:duo_3,         '', '')
-  call <sid>X('javaScriptNull',         s:uno_1,         '', '')
-  call <sid>X('javaScriptNumber',       s:uno_1,         '', '')
-  call <sid>X('javaScriptRequire',      s:duo_2,         '', '')
-  call <sid>X('javaScriptReserved',     s:duo_3,         '', '')
-  " https://github.com/pangloss/vim-javascript
-  call <sid>X('jsArrowFunction',        s:duo_3,         '', '')
-  call <sid>X('jsClassKeywords',        s:duo_3,         '', '')
-  call <sid>X('jsDocParam',             s:duo_2,         '', '')
-  call <sid>X('jsDocTags',              s:duo_3,         '', '')
-  call <sid>X('jsFuncCall',             s:duo_2,         '', '')
-  call <sid>X('jsFunction',             s:duo_3,         '', '')
-  call <sid>X('jsGlobalObjects',        s:uno_1,         '', '')
-  call <sid>X('jsModuleWords',          s:duo_3,         '', '')
-  call <sid>X('jsModules',              s:duo_3,         '', '')
-  call <sid>X('jsNull',                 s:uno_1,         '', '')
-  call <sid>X('jsOperator',             s:duo_3,         '', '')
-  call <sid>X('jsStorageClass',         s:duo_3,         '', '')
-  call <sid>X('jsTemplateBraces',       s:syntax_accent, '', '')
-  call <sid>X('jsTemplateVar',          s:duo_2,         '', '')
-  call <sid>X('jsThis',                 s:syntax_accent, '', '')
-  call <sid>X('jsUndefined',            s:uno_1,         '', '')
-  " https://github.com/othree/yajs.vim
-  call <sid>X('javascriptArrowFunc',    s:duo_3,         '', '')
-  call <sid>X('javascriptClassExtends', s:duo_3,         '', '')
-  call <sid>X('javascriptClassKeyword', s:duo_3,         '', '')
-  call <sid>X('javascriptDocNotation',  s:duo_3,         '', '')
-  call <sid>X('javascriptDocParamName', s:duo_2,         '', '')
-  call <sid>X('javascriptDocTags',      s:duo_3,         '', '')
-  call <sid>X('javascriptEndColons',    s:uno_4,         '', '')
-  call <sid>X('javascriptExport',       s:duo_3,         '', '')
-  call <sid>X('javascriptFuncArg',      s:uno_1,         '', '')
-  call <sid>X('javascriptFuncKeyword',  s:duo_3,         '', '')
-  call <sid>X('javascriptIdentifier',   s:syntax_accent, '', '')
-  call <sid>X('javascriptImport',       s:duo_3,         '', '')
-  call <sid>X('javascriptObjectLabel',  s:uno_1,         '', '')
-  call <sid>X('javascriptOpSymbol',     s:duo_2,         '', '')
-  call <sid>X('javascriptOpSymbols',    s:duo_2,         '', '')
-  call <sid>X('javascriptPropertyName', s:duo_2,         '', '')
-  call <sid>X('javascriptTemplateSB',   s:syntax_accent, '', '')
-  call <sid>X('javascriptVariable',     s:duo_3,         '', '')
-  " }}}
+" NvimTree
+call s:Hi('NvimTreeNormal',                    s:colors.fg,       s:colors.bg,         '')
+call s:Hi('NvimTreeFolderIcon',                s:colors.accent,   '',                  '')
+call s:Hi('NvimTreeFolderName',                s:colors.accent,   '',                  '')
+call s:Hi('NvimTreeOpenedFolderName',          s:colors.accent,   '',                  '')
+call s:Hi('NvimTreeSymlink',                   s:colors.blue,     '',                  'italic')
+call s:Hi('NvimTreeExecFile',                  s:colors.bright_green, '',              '')
+call s:Hi('NvimTreeSpecialFile',               s:colors.purple,   '',                  '')
+call s:Hi('NvimTreeImageFile',                 s:colors.blue,     '',                  '')
 
-  " JSON highlighting -------------------------------------------------------{{{
-  call <sid>X('jsonCommentError',      s:uno_1,         '', ''        )
-  call <sid>X('jsonKeyword',           s:uno_2,         '', ''        )
-  call <sid>X('jsonQuote',             s:uno_4,         '', ''        )
-  call <sid>X('jsonMissingCommaError', s:syntax_accent, '', 'reverse' )
-  call <sid>X('jsonNoQuotesError',     s:syntax_accent, '', 'reverse' )
-  call <sid>X('jsonNumError',          s:syntax_accent, '', 'reverse' )
-  call <sid>X('jsonString',            s:duo_2,         '', ''        )
-  call <sid>X('jsonStringSQError',     s:syntax_accent, '', 'reverse' )
-  call <sid>X('jsonSemicolonError',    s:syntax_accent, '', 'reverse' )
-  " }}}
+" Which-key
+call s:Hi('WhichKey',                          s:colors.accent,   '',                  '')
+call s:Hi('WhichKeyGroup',                     s:colors.purple,   '',                  '')
+call s:Hi('WhichKeyDesc',                      s:colors.fg,       '',                  '')
+call s:Hi('WhichKeySeperator',                 s:colors.fg_alt,   '',                  '')
+call s:Hi('WhichKeySeparator',                 s:colors.fg_alt,   '',                  '')
+call s:Hi('WhichKeyFloat',                     s:colors.fg,       s:colors.bg_alt,     '')
+call s:Hi('WhichKeyValue',                     s:colors.green,    '',                  '')
 
-  " Markdown highlighting ---------------------------------------------------{{{
-  call <sid>X('markdownUrl',              s:duo_3, '', '')
-  call <sid>X('markdownCode',             s:duo_1, '', '')
-  call <sid>X('markdownHeadingDelimiter', s:duo_3, '', '')
-  call <sid>X('markdownListMarker',       s:duo_3, '', '')
-  " }}}
+" Essential legacy highlighting for compatibility
+call s:Hi('htmlTag',            s:colors.accent,     '',                  '')
+call s:Hi('htmlTagName',        s:colors.purple,     '',                  '')
+call s:Hi('htmlArg',            s:colors.accent,     '',                  '')
+call s:Hi('markdownCode',       s:colors.green,      '',                  '')
+call s:Hi('markdownCodeBlock',  s:colors.green,      '',                  '')
+call s:Hi('markdownH1',         s:colors.accent,     '',                  '')
+call s:Hi('markdownH2',         s:colors.accent,     '',                  '')
+call s:Hi('markdownLinkText',   s:colors.blue,       '',                  '')
+call s:Hi('markdownListMarker', s:colors.accent,     '',                  '')
 
-  " NERDTree highlighting ---------------------------------------------------{{{
-  call <sid>X('NERDTreeExecFile',      s:duo_1, '', '')
-  " }}}
+" Spell checking
+call s:Hi('SpellBad',           '',                  '',                  'undercurl')
+call s:Hi('SpellLocal',         '',                  '',                  'undercurl')
+call s:Hi('SpellCap',           '',                  '',                  'undercurl')
+call s:Hi('SpellRare',          '',                  '',                  'undercurl')
 
-  " Spelling highlighting ---------------------------------------------------{{{
-  call <sid>X('SpellBad',     '', s:syntax_bg, 'undercurl')
-  call <sid>X('SpellLocal',   '', s:syntax_bg, 'undercurl')
-  call <sid>X('SpellCap',     '', s:syntax_bg, 'undercurl')
-  call <sid>X('SpellRare',    '', s:syntax_bg, 'undercurl')
-  " }}}
-
-  " Vim highlighting --------------------------------------------------------{{{
-  call <sid>X('vimHighlight',    s:duo_2, '', '')
-  call <sid>X('vimLineComment',  s:uno_4, '', 'none')
-  call <sid>X('vimCommentTitle', s:uno_4, '', 'bold')
-  call <sid>X('vimCommand',      s:uno_1, '', '')
-  call <sid>X('vimVar',          s:duo_2, '', '')
-  call <sid>X('vimEnvVar',       s:duo_3, '', '')
-
-  " Vim Help highlights
-  call <sid>X('helpHyperTextJump', s:duo_1, '', '')
-  call <sid>X('helpSpecial',       s:duo_2, '', '')
-
-  " }}}
-
-  " XML highlighting --------------------------------------------------------{{{
-  call <sid>X('xmlAttrib',  s:uno_1,         '', '')
-  call <sid>X('xmlEndTag',  s:syntax_accent, '', '')
-  call <sid>X('xmlTag',     s:syntax_accent, '', '')
-  call <sid>X('xmlTagName', s:syntax_accent, '', '')
-  " }}}
-
-  " YAML highlighting -------------------------------------------------------{{{
-  call <sid>X('yamlKey',         s:duo_2, '', '')
-  call <sid>X('yamlOperator',    s:uno_4, '', '')
-
-  call <sid>X('liquidDelimiter', s:uno_4, '', '')
-  call <sid>X('liquidKeyword',   s:uno_3, '', '')
-  " }}}
-
-  delf <SID>X
-else
-    colorscheme default
-endif
-"}}}
-
-
+" Terminal colors (for :terminal)
+let g:terminal_color_0  = s:colors.bg
+let g:terminal_color_1  = s:colors.red
+let g:terminal_color_2  = s:colors.bright_green
+let g:terminal_color_3  = s:colors.blue
+let g:terminal_color_4  = s:colors.blue
+let g:terminal_color_5  = s:colors.purple
+let g:terminal_color_6  = s:colors.accent
+let g:terminal_color_7  = s:colors.fg
+let g:terminal_color_8  = s:colors.fg_alt
+let g:terminal_color_9  = s:colors.red
+let g:terminal_color_10 = s:colors.bright_green
+let g:terminal_color_11 = s:colors.blue
+let g:terminal_color_12 = s:colors.blue
+let g:terminal_color_13 = s:colors.purple
+let g:terminal_color_14 = s:colors.accent
+let g:terminal_color_15 = s:colors.white
