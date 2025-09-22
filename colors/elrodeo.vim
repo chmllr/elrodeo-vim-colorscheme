@@ -1,7 +1,7 @@
 " Name:    Elrodeo (Based on Nova structure)
 " Author:  Christian Müller
 " License: MIT
-" Version: 5.0.2
+" Version: 5.1.0
 " Description: Modern Neovim colorscheme based on Nova structure with ElRodeo colors
 
 " ==================================================================
@@ -18,6 +18,10 @@ let s:accent       = '#2d9885'
 let s:blue         = '#8fbadb'
 let s:purple       = '#9470ff'
 let s:orange       = '#ff8c00'
+let s:yellow       = '#DADA93'
+let s:green        = '#A8CE93'
+let s:special_orange = '#F2C38F'
+let s:pink         = '#D18EC2'
 
 " ==================================================================
 " HIGHLIGHT HELPER
@@ -30,7 +34,7 @@ function! s:highlight_helper(...)
   let l:gui = a:0 >= 4 ? a:4 : "NONE"
 
   let l:cmd = "highlight " . l:syntax_group . " guifg=" . l:foreground_color . " guibg=" . l:background_color
-  if !empty(l:gui) && l:gui != "NONE"
+  if l:gui != "NONE"
     let l:cmd .= " gui=" . l:gui
   endif
 
@@ -92,13 +96,13 @@ call s:highlight_helper("CtrlPMatch", s:bg, s:accent)
 call s:highlight_helper("gitcommitSummary", s:accent, "")
 
 " VERSION CONTROL
-call s:highlight_helper("DiffAdd", s:bg, s:accent)
-call s:highlight_helper("DiffChange", s:bg, s:blue)
+call s:highlight_helper("DiffAdd", s:bg, s:green)
+call s:highlight_helper("DiffChange", s:bg, s:special_orange)
 call s:highlight_helper("DiffDelete", s:orange, "")
-call s:highlight_helper("DiffText", s:bg, s:blue)
-call s:highlight_helper("GitGutterAdd", s:accent, "")
-call s:highlight_helper("GitGutterChange", s:blue, "")
-call s:highlight_helper("GitGutterChangeDelete", s:blue, "")
+call s:highlight_helper("DiffText", s:bg, s:special_orange, "BOLD")
+call s:highlight_helper("GitGutterAdd", s:green, "")
+call s:highlight_helper("GitGutterChange", s:special_orange, "")
+call s:highlight_helper("GitGutterChangeDelete", s:special_orange, "")
 call s:highlight_helper("GitGutterDelete", s:orange, "")
 
 " OTHER
@@ -118,9 +122,9 @@ call s:highlight_helper("PmenuSbar", s:fg_alt, s:fg_alt)
 call s:highlight_helper("fzf1", s:bg, s:bg_alt)
 call s:highlight_helper("fzf2", s:bg, s:bg_alt)
 call s:highlight_helper("fzf3", s:bg, s:bg_alt)
-call s:highlight_helper("EasyMotionTarget", s:orange, "")
-call s:highlight_helper("EasyMotionTarget2First", s:accent, "")
-call s:highlight_helper("EasyMotionTarget2Second", s:accent, "")
+call s:highlight_helper("EasyMotionTarget", s:orange, "", "BOLD")
+call s:highlight_helper("EasyMotionTarget2First", s:special_orange, "")
+call s:highlight_helper("EasyMotionTarget2Second", s:yellow, "")
 
 
 " ==================================================================
@@ -145,7 +149,7 @@ call s:highlight_helper("Boolean", s:blue, "")
 call s:highlight_helper("Exception", s:orange, "")
 
 " OPERATOR
-call s:highlight_helper("Operator", s:purple, "")
+call s:highlight_helper("Operator", s:accent, "")
 
 " COMMENT
 call s:highlight_helper("SpecialComment", s:fg_alt, "")
@@ -236,53 +240,53 @@ call s:highlight_helper("typescriptVars", s:blue, "")
 call s:highlight_helper("typescriptFunction", s:blue, "")
 
 " STATEMENT
-call s:highlight_helper("Statement", s:accent, "")
-call s:highlight_helper("jsFuncCall", s:accent, "")
-call s:highlight_helper("jsOperator", s:accent, "")
-call s:highlight_helper("jsSpreadOperator", s:accent, "")
-call s:highlight_helper("jsTemplateExpression", s:accent, "")
-call s:highlight_helper("jsFuncArgExpression", s:accent, "")
+call s:highlight_helper("Statement", s:yellow, "")
+call s:highlight_helper("jsFuncCall", s:yellow, "")
+call s:highlight_helper("jsOperator", s:yellow, "")
+call s:highlight_helper("jsSpreadOperator", s:yellow, "")
+call s:highlight_helper("jsTemplateExpression", s:yellow, "")
+call s:highlight_helper("jsFuncArgExpression", s:yellow, "")
 call s:highlight_helper("jsSpreadExpression", s:blue, "")
 call s:highlight_helper("jsRestExpression", s:blue, "")
-call s:highlight_helper("cssFunctionName", s:purple, "")
-call s:highlight_helper("cssProp", s:accent, "")
-call s:highlight_helper("htmlArg", s:accent, "")
-call s:highlight_helper("jsxRegion", s:accent, "")
-call s:highlight_helper("xmlTag", s:accent, "")
-call s:highlight_helper("xmlEndTag", s:accent, "")
-call s:highlight_helper("xmlTagName", s:accent, "")
-call s:highlight_helper("xmlEqual", s:accent, "")
-call s:highlight_helper("shCmdSubRegion", s:accent, "")
-call s:highlight_helper("typescriptOperator", s:accent, "")
-call s:highlight_helper("typescriptOpSymbols", s:accent, "")
-call s:highlight_helper("typescriptProp", s:accent, "")
-call s:highlight_helper("typescriptInterpolation", s:accent, "")
-call s:highlight_helper("typescriptEventListenerMethods", s:accent, "")
-call s:highlight_helper("dockerfileKeyword", s:accent, "")
+call s:highlight_helper("cssFunctionName", s:yellow, "")
+call s:highlight_helper("cssProp", s:yellow, "")
+call s:highlight_helper("htmlArg", s:yellow, "")
+call s:highlight_helper("jsxRegion", s:yellow, "")
+call s:highlight_helper("xmlTag", s:yellow, "")
+call s:highlight_helper("xmlEndTag", s:yellow, "")
+call s:highlight_helper("xmlTagName", s:yellow, "")
+call s:highlight_helper("xmlEqual", s:yellow, "")
+call s:highlight_helper("shCmdSubRegion", s:yellow, "")
+call s:highlight_helper("typescriptOperator", s:yellow, "")
+call s:highlight_helper("typescriptOpSymbols", s:yellow, "")
+call s:highlight_helper("typescriptProp", s:yellow, "")
+call s:highlight_helper("typescriptInterpolation", s:yellow, "")
+call s:highlight_helper("typescriptEventListenerMethods", s:yellow, "")
+call s:highlight_helper("dockerfileKeyword", s:yellow, "")
 
 " TYPE
-call s:highlight_helper("Type", s:accent, "")
-call s:highlight_helper("jsFunction", s:purple, "")
-call s:highlight_helper("jsFunctionKey", s:purple, "")
-call s:highlight_helper("jsStorageClass", s:accent, "")
-call s:highlight_helper("jsExportDefault", s:accent, "")
-call s:highlight_helper("jsNan", s:purple, "")
-call s:highlight_helper("shFunctionKey", s:purple, "")
-call s:highlight_helper("jsFlowDefinition", s:accent, "")
-call s:highlight_helper("jsFlowClassDef", s:accent, "")
-call s:highlight_helper("jsFlowTypeStatement", s:accent, "")
-call s:highlight_helper("jsFlowTypeKeyword", s:accent, "")
-call s:highlight_helper("jsFlowImportType", s:purple, "")
-call s:highlight_helper("jsFlowArgumentDef", s:accent, "")
-call s:highlight_helper("jsFlowReturn", s:accent, "")
-call s:highlight_helper("jsFlowFunctionGroup", s:purple, "")
-call s:highlight_helper("jsFlowClassGroup", s:accent, "")
-call s:highlight_helper("typescriptEnumKeyword", s:accent, "")
-call s:highlight_helper("typescriptVariable", s:accent, "")
-call s:highlight_helper("typescriptFuncKeyword", s:accent, "")
-call s:highlight_helper("typescriptDefault", s:accent, "")
-call s:highlight_helper("typescriptReserved", s:accent, "")
-call s:highlight_helper("goDeclaration", s:accent, "")
+call s:highlight_helper("Type", s:green, "")
+call s:highlight_helper("jsFunction", s:green, "")
+call s:highlight_helper("jsFunctionKey", s:green, "")
+call s:highlight_helper("jsStorageClass", s:green, "")
+call s:highlight_helper("jsExportDefault", s:green, "")
+call s:highlight_helper("jsNan", s:green, "")
+call s:highlight_helper("shFunctionKey", s:green, "")
+call s:highlight_helper("jsFlowDefinition", s:green, "")
+call s:highlight_helper("jsFlowClassDef", s:green, "")
+call s:highlight_helper("jsFlowTypeStatement", s:green, "")
+call s:highlight_helper("jsFlowTypeKeyword", s:green, "")
+call s:highlight_helper("jsFlowImportType", s:green, "")
+call s:highlight_helper("jsFlowArgumentDef", s:green, "")
+call s:highlight_helper("jsFlowReturn", s:green, "")
+call s:highlight_helper("jsFlowFunctionGroup", s:green, "")
+call s:highlight_helper("jsFlowClassGroup", s:green, "")
+call s:highlight_helper("typescriptEnumKeyword", s:green, "")
+call s:highlight_helper("typescriptVariable", s:green, "")
+call s:highlight_helper("typescriptFuncKeyword", s:green, "")
+call s:highlight_helper("typescriptDefault", s:green, "")
+call s:highlight_helper("typescriptReserved", s:green, "")
+call s:highlight_helper("goDeclaration", s:green, "")
 
 " GLOBAL
 call s:highlight_helper("PreProc", s:purple, "")
@@ -301,47 +305,47 @@ call s:highlight_helper("goPackage", s:purple, "")
 call s:highlight_helper("goImport", s:purple, "")
 
 " EMPHASIS
-call s:highlight_helper("Underlined", s:purple, "")
-call s:highlight_helper("markdownItalic", s:purple, "")
-call s:highlight_helper("markdownBold", s:purple, "")
-call s:highlight_helper("markdownBoldItalic", s:purple, "")
+call s:highlight_helper("Underlined", s:pink, "")
+call s:highlight_helper("markdownItalic", s:pink, "")
+call s:highlight_helper("markdownBold", s:pink, "")
+call s:highlight_helper("markdownBoldItalic", s:pink, "")
 
 " SPECIAL
-call s:highlight_helper("Special", s:accent, "")
-call s:highlight_helper("SpecialKey", s:accent, "")
-call s:highlight_helper("NonText", s:accent, "")
-call s:highlight_helper("Title", s:accent, "")
-call s:highlight_helper("jsBraces", s:accent, "")
-call s:highlight_helper("jsFuncBraces", s:accent, "")
-call s:highlight_helper("jsDestructuringBraces", s:accent, "")
-call s:highlight_helper("jsClassBraces", s:accent, "")
-call s:highlight_helper("jsParens", s:accent, "")
-call s:highlight_helper("jsFuncParens", s:accent, "")
-call s:highlight_helper("jsArrowFunction", s:purple, "")
-call s:highlight_helper("jsModuleAsterisk", s:accent, "")
-call s:highlight_helper("cssBraces", s:accent, "")
-call s:highlight_helper("cssBraces", s:accent, "")
-call s:highlight_helper("markdownHeadingDelimiter", s:accent, "")
-call s:highlight_helper("markdownH1", s:accent, "")
-call s:highlight_helper("markdownH2", s:accent, "")
-call s:highlight_helper("markdownH3", s:accent, "")
-call s:highlight_helper("markdownH4", s:accent, "")
-call s:highlight_helper("markdownH5", s:accent, "")
-call s:highlight_helper("markdownH6", s:accent, "")
-call s:highlight_helper("markdownRule", s:accent, "")
-call s:highlight_helper("markdownListMarker", s:accent, "")
-call s:highlight_helper("markdownOrderedListMarker", s:accent, "")
-call s:highlight_helper("markdownLinkText", s:accent, "")
-call s:highlight_helper("markdownCodeDelimiter", s:accent, "")
-call s:highlight_helper("netrwClassify", s:accent, "")
-call s:highlight_helper("netrwVersion", s:accent, "")
-call s:highlight_helper("netrwSpecial", s:accent, "")
-call s:highlight_helper("typescriptParens", s:accent, "")
-call s:highlight_helper("typescriptBraces", s:accent, "")
-call s:highlight_helper("typescriptArrowFunc", s:accent, "")
-call s:highlight_helper("typescriptPropietaryMethods", s:accent, "")
-call s:highlight_helper("typescriptParen", s:accent, "")
-call s:highlight_helper("CtrlPStats", s:accent, "")
+call s:highlight_helper("Special", s:special_orange, "")
+call s:highlight_helper("SpecialKey", s:special_orange, "")
+call s:highlight_helper("NonText", s:special_orange, "")
+call s:highlight_helper("Title", s:special_orange, "")
+call s:highlight_helper("jsBraces", s:special_orange, "")
+call s:highlight_helper("jsFuncBraces", s:special_orange, "")
+call s:highlight_helper("jsDestructuringBraces", s:special_orange, "")
+call s:highlight_helper("jsClassBraces", s:special_orange, "")
+call s:highlight_helper("jsParens", s:special_orange, "")
+call s:highlight_helper("jsFuncParens", s:special_orange, "")
+call s:highlight_helper("jsArrowFunction", s:special_orange, "")
+call s:highlight_helper("jsModuleAsterisk", s:special_orange, "")
+call s:highlight_helper("cssBraces", s:special_orange, "")
+call s:highlight_helper("cssBraces", s:special_orange, "")
+call s:highlight_helper("markdownHeadingDelimiter", s:special_orange, "")
+call s:highlight_helper("markdownH1", s:special_orange, "")
+call s:highlight_helper("markdownH2", s:special_orange, "")
+call s:highlight_helper("markdownH3", s:special_orange, "")
+call s:highlight_helper("markdownH4", s:special_orange, "")
+call s:highlight_helper("markdownH5", s:special_orange, "")
+call s:highlight_helper("markdownH6", s:special_orange, "")
+call s:highlight_helper("markdownRule", s:special_orange, "")
+call s:highlight_helper("markdownListMarker", s:special_orange, "")
+call s:highlight_helper("markdownOrderedListMarker", s:special_orange, "")
+call s:highlight_helper("markdownLinkText", s:special_orange, "")
+call s:highlight_helper("markdownCodeDelimiter", s:special_orange, "")
+call s:highlight_helper("netrwClassify", s:special_orange, "")
+call s:highlight_helper("netrwVersion", s:special_orange, "")
+call s:highlight_helper("netrwSpecial", s:special_orange, "")
+call s:highlight_helper("typescriptParens", s:special_orange, "")
+call s:highlight_helper("typescriptBraces", s:special_orange, "")
+call s:highlight_helper("typescriptArrowFunc", s:special_orange, "")
+call s:highlight_helper("typescriptPropietaryMethods", s:special_orange, "")
+call s:highlight_helper("typescriptParen", s:special_orange, "")
+call s:highlight_helper("CtrlPStats", s:special_orange, "")
 
 " TRIVIAL
 call s:highlight_helper("Comment", s:fg_alt, "")
@@ -371,9 +375,9 @@ call s:highlight_helper("EasyMotionShade", s:fg_alt, "")
 " LSP REFERENCE HIGHLIGHTING
 " ==================================================================
 
-call s:highlight_helper("LspReferenceText", "", s:cursor_line, "")
-call s:highlight_helper("LspReferenceRead", "", s:cursor_line, "")
-call s:highlight_helper("LspReferenceWrite", "", s:cursor_line, "")
+call s:highlight_helper("LspReferenceText", "NONE", s:cursor_line)
+call s:highlight_helper("LspReferenceRead", "NONE", s:cursor_line)
+call s:highlight_helper("LspReferenceWrite", "NONE", s:cursor_line)
 
 
 " ==================================================================
@@ -384,18 +388,18 @@ call s:highlight_helper("LspReferenceWrite", "", s:cursor_line, "")
 let g:terminal_ansi_colors = [
 \ s:bg,
 \ s:orange,
-\ s:accent,
-\ s:accent,
+\ s:green,
+\ s:yellow,
 \ s:blue,
 \ s:purple,
 \ s:accent,
 \ s:fg,
 \ s:fg_alt,
-\ s:accent,
-\ s:accent,
-\ s:accent,
+\ s:special_orange,
+\ s:green,
+\ s:yellow,
 \ s:blue,
-\ s:purple,
+\ s:pink,
 \ s:accent,
 \ s:white
 \]
@@ -403,18 +407,18 @@ let g:terminal_ansi_colors = [
 " NEOVIM TERMINAL MODE
 let g:terminal_color_0 = s:bg
 let g:terminal_color_1 = s:orange
-let g:terminal_color_2 = s:accent
-let g:terminal_color_3 = s:accent
+let g:terminal_color_2 = s:green
+let g:terminal_color_3 = s:yellow
 let g:terminal_color_4 = s:blue
 let g:terminal_color_5 = s:purple
 let g:terminal_color_6 = s:accent
 let g:terminal_color_7 = s:fg
 let g:terminal_color_8 = s:fg_alt
-let g:terminal_color_9 = s:accent
-let g:terminal_color_10 = s:accent
-let g:terminal_color_11 = s:accent
+let g:terminal_color_9 = s:special_orange
+let g:terminal_color_10 = s:green
+let g:terminal_color_11 = s:yellow
 let g:terminal_color_12 = s:blue
-let g:terminal_color_13 = s:purple
+let g:terminal_color_13 = s:pink
 let g:terminal_color_14 = s:accent
 let g:terminal_color_15 = s:white
 
@@ -434,3 +438,6 @@ let g:fzf_colors = {
 \ "spinner": ["fg", "IncSearch"],
 \ "header":  ["fg", "IncSearch"]
 \}
+
+" VIM-POLYGLOT
+let g:javascript_plugin_flow = 1
