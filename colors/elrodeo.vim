@@ -95,15 +95,22 @@ call s:highlight_helper("netrwSizeDate", s:accent, "")
 call s:highlight_helper("CtrlPMatch", s:bg, s:accent)
 call s:highlight_helper("gitcommitSummary", s:accent, "")
 
-" VERSION CONTROL
+" VERSION CONTROL & VIMDIFF
 call s:highlight_helper("DiffAdd", s:bg, s:green)
-call s:highlight_helper("DiffChange", s:bg, s:special_orange)
-call s:highlight_helper("DiffDelete", s:orange, "")
-call s:highlight_helper("DiffText", s:bg, s:special_orange, "BOLD")
+call s:highlight_helper("DiffChange", s:bg, s:fg_alt)
+call s:highlight_helper("DiffDelete", s:bg, s:orange)
+call s:highlight_helper("DiffText", s:bg, s:yellow, "BOLD")
 call s:highlight_helper("GitGutterAdd", s:green, "")
-call s:highlight_helper("GitGutterChange", s:special_orange, "")
-call s:highlight_helper("GitGutterChangeDelete", s:special_orange, "")
+call s:highlight_helper("GitGutterChange", s:fg_alt, "")
+call s:highlight_helper("GitGutterChangeDelete", s:fg_alt, "")
 call s:highlight_helper("GitGutterDelete", s:orange, "")
+
+" Enhanced vimdiff support
+call s:highlight_helper("diffAdded", s:green, "")
+call s:highlight_helper("diffRemoved", s:orange, "")
+call s:highlight_helper("diffChanged", s:fg_alt, "")
+call s:highlight_helper("diffLine", s:accent, "", "BOLD")
+call s:highlight_helper("diffSubname", s:purple, "")
 
 " OTHER
 call s:highlight_helper("LineNr", s:fg_alt, "")
