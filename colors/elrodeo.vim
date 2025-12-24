@@ -22,6 +22,7 @@ let s:yellow       = '#DADA93'
 let s:green        = '#A8CE93'
 let s:special_orange = '#F2C38F'
 let s:pink         = '#D18EC2'
+let s:red          = '#E06C75'
 
 " ==================================================================
 " HIGHLIGHT HELPER
@@ -98,16 +99,16 @@ call s:highlight_helper("gitcommitSummary", s:accent, "")
 " VERSION CONTROL & VIMDIFF
 call s:highlight_helper("DiffAdd", s:bg, s:green)
 call s:highlight_helper("DiffChange", s:bg, s:fg_alt)
-call s:highlight_helper("DiffDelete", s:bg, s:orange)
+call s:highlight_helper("DiffDelete", s:bg, s:red)
 call s:highlight_helper("DiffText", s:bg, s:yellow, "BOLD")
 call s:highlight_helper("GitGutterAdd", s:green, "")
 call s:highlight_helper("GitGutterChange", s:fg_alt, "")
 call s:highlight_helper("GitGutterChangeDelete", s:fg_alt, "")
-call s:highlight_helper("GitGutterDelete", s:orange, "")
+call s:highlight_helper("GitGutterDelete", s:red, "")
 
 " Enhanced vimdiff support
 call s:highlight_helper("diffAdded", s:green, "")
-call s:highlight_helper("diffRemoved", s:orange, "")
+call s:highlight_helper("diffRemoved", s:red, "")
 call s:highlight_helper("diffChanged", s:fg_alt, "")
 call s:highlight_helper("diffLine", s:accent, "", "BOLD")
 call s:highlight_helper("diffSubname", s:purple, "")
